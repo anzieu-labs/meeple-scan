@@ -2,6 +2,7 @@ import { sql } from "drizzle-orm";
 import { boolean, index, integer, jsonb, pgEnum, pgTable, primaryKey, real, text, timestamp, uuid } from "drizzle-orm/pg-core";
 
 import type { PlayerVotes } from "@/lib/bgg/parse";
+import type { EventName, EventProps } from "@/lib/events/names";
 import type { OcrLine } from "@/lib/matching/cover";
 import type { VisionGame } from "@/lib/matching/vision-match";
 
@@ -121,4 +122,21 @@ export const feedback = pgTable(
     locale: text().notNull(),
   },
   (t) => [index().on(t.createdAt)],
+);
+
+/**
+ * Usage events (lib/events/names.ts): visits, where they came from, photos taken, installs. Nothing that
+ * identifies a person or a device: `visit` is a random id for one page load, kept in memory on the page.
+ */
+export const events = pgTable(
+  "events",
+  {
+    id: uuid().primaryKey().defaultRandom(),
+    createdAt: timestamp({ withTimezone: true }).defaultNow().notNull(),
+    name: text().$type<EventName>().notNull(),
+    visit: uuid().notNull(),
+    locale: text().notNull(),
+    props: jsonb().$type<EventProps>().notNull().default({}),
+  },
+  (t) => [index().on(t.createdAt), index().on(t.name, t.createdAt)],
 );

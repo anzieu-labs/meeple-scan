@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { notFound } from "next/navigation";
 
+import { VisitTracker } from "@/components/events/visit-tracker";
 import { TabBar } from "@/components/nav/tab-bar";
 import { I18nProvider } from "@/lib/i18n/client";
 import { hasLocale, LOCALES } from "@/lib/i18n/config";
@@ -63,6 +64,8 @@ export default async function RootLayout({ children, params }: LayoutProps<"/[la
         </I18nProvider>
         {/* Page views for Vercel Web Analytics: no cookies, nothing personal. Only reports on Vercel. */}
         <Analytics />
+        {/* Where visits come from and what they do, in our own database (lib/events). */}
+        <VisitTracker />
       </body>
     </html>
   );

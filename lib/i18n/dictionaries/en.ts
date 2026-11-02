@@ -54,7 +54,7 @@ export const en = {
   },
   landing: {
     kicker: "A board game scanner",
-    headline: "Is it any good? Ask the box.",
+    headline: "Scan it before you play it.",
     lede: "Point your phone at a board game, or at your whole shelf. Meeple Scan shows each game's BoardGameGeek rating, complexity and best player count in about two seconds.",
     qrTitle: "Open it on your phone",
     qrHint: "Point your phone's camera at this code.",
@@ -64,6 +64,12 @@ export const en = {
       { title: "No account", text: "Nothing to sign up for: open it and scan" },
       { title: "Installable app", text: "Add it to your home screen, no app store needed" },
       { title: "History on your phone", text: "Your games stay on your device, not on our servers" },
+    ],
+    screensTitle: "One photo, all the stats",
+    screens: [
+      "Every game on the shelf, confirmed in a tap",
+      "Point at the box, or the whole shelf",
+      "Rating, complexity and the best player count",
     ],
     hotTitle: "Hot on BoardGameGeek right now",
     faqTitle: "Rules clarifications",
@@ -102,6 +108,42 @@ export const en = {
       },
     ],
     footerCode: "Source code",
+  },
+  privacy: {
+    title: "Privacy",
+    updated: "Last updated: November 2026",
+    intro:
+      "Meeple Scan is a free, open-source app run by Alexis Anzieu, with no account and no ads. Here is everything it keeps, why, and for how long.",
+    sections: [
+      {
+        title: "Your photos",
+        text: "A photo is only sent to be read, then forgotten: it is never stored. It goes to our text-reading (OCR) server and to Google's Gemini API, which name the games on it. We use Gemini's paid plan: Google doesn't use the photos to improve its products.",
+      },
+      {
+        title: "What a photo leaves behind",
+        text: "To make recognition better, we keep the text read on the box, the games found and whether you said they were right. Nothing about you or your phone. Kept {photoMonths} months.",
+      },
+      {
+        title: "Usage statistics",
+        text: "We count visits: the page, the language, phone or computer, the site or link that sent you, and the photos taken. No cookie, no IP address, nothing stored on your device: a random number links the actions of one visit only. Kept {eventMonths} months. Vercel Web Analytics also counts page views, without cookies.",
+      },
+      {
+        title: "Feedback",
+        text: "Messages sent from Settings are kept with the app's language, and your email only if you give one, to answer you. Kept {feedbackMonths} months.",
+      },
+      {
+        title: "On your phone",
+        text: "Your history of scanned games and your language stay on your phone. Clearing your browser's data for this site removes them.",
+      },
+      {
+        title: "Who handles the data",
+        text: "Vercel hosts the app, Neon hosts the database, Google reads the photos (Gemini) and our own server reads their text. Game data comes from BoardGameGeek: nothing about you is sent there.",
+      },
+      {
+        title: "Your rights",
+        text: "You can ask what we have about you, or have it deleted, through the feedback form in Settings (give the email you used, if any). You can also complain to your data protection authority.",
+      },
+    ],
   },
   tabs: { label: "Main", history: "History", scan: "Scan", rankings: "Rankings", search: "Search", settings: "Settings" },
   settings: {

@@ -1,6 +1,7 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
+import Link from "next/link";
 import type { ReactNode } from "react";
 
 import { PoweredByBgg } from "@/components/game/powered-by-bgg";
@@ -13,7 +14,7 @@ import { SITE } from "@/lib/site";
 
 /** The language, a way to write to us, and where the code lives. */
 export function SettingsView() {
-  const { locale, t } = useI18n();
+  const { locale, t, href } = useI18n();
   return (
     <PageShell>
       <PageHeader title={t.settings.title} />
@@ -49,6 +50,9 @@ export function SettingsView() {
         >
           <GitHubMark className="size-7" />
         </a>
+        <Link href={href("/privacy")} className="text-sm text-muted-foreground underline-offset-4 hover:underline">
+          {t.privacy.title}
+        </Link>
         <PoweredByBgg credit={false} />
       </div>
     </PageShell>

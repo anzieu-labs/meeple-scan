@@ -47,7 +47,7 @@ export const pl: Dictionary = {
   },
   landing: {
     kicker: "Skaner gier planszowych",
-    headline: "Warto? Zapytaj pudełko.",
+    headline: "Zeskanuj, zanim zagrasz.",
     lede: "Wyceluj telefon w grę planszową albo w całą półkę. Meeple Scan w jakieś dwie sekundy pokaże ocenę BoardGameGeek, złożoność i najlepszą liczbę graczy każdej gry.",
     qrTitle: "Otwórz na telefonie",
     qrHint: "Skieruj aparat telefonu na ten kod.",
@@ -57,6 +57,12 @@ export const pl: Dictionary = {
       { title: "Bez konta", text: "Nic nie trzeba zakładać: otwórz i skanuj" },
       { title: "Do zainstalowania", text: "Dodaj do ekranu głównego, bez sklepu z aplikacjami" },
       { title: "Historia na telefonie", text: "Twoje gry zostają na urządzeniu, nie na naszych serwerach" },
+    ],
+    screensTitle: "Jedno zdjęcie, wszystkie statystyki",
+    screens: [
+      "Każda gra z półki, potwierdzona jednym dotknięciem",
+      "Skieruj aparat na pudełko lub całą półkę",
+      "Ocena, złożoność i najlepsza liczba graczy",
     ],
     hotTitle: "Teraz gorące na BoardGameGeek",
     faqTitle: "Wyjaśnienia zasad",
@@ -95,6 +101,42 @@ export const pl: Dictionary = {
       },
     ],
     footerCode: "Kod źródłowy",
+  },
+  privacy: {
+    title: "Prywatność",
+    updated: "Ostatnia aktualizacja: listopad 2026",
+    intro:
+      "Meeple Scan to darmowa aplikacja open source, którą prowadzi Alexis Anzieu, bez konta i bez reklam. Oto wszystko, co przechowuje, po co i jak długo.",
+    sections: [
+      {
+        title: "Twoje zdjęcia",
+        text: "Zdjęcie jest wysyłane tylko po to, by je odczytać, a potem zapominane: nigdy nie jest przechowywane. Trafia na nasz serwer odczytujący tekst (OCR) i do API Gemini od Google, które rozpoznają na nim gry. Korzystamy z płatnego planu Gemini: Google nie używa zdjęć do ulepszania swoich produktów.",
+      },
+      {
+        title: "Co zostaje po zdjęciu",
+        text: "Aby poprawić rozpoznawanie, zachowujemy tekst odczytany z pudełka, znalezione gry i informację, czy według Ciebie były trafne. Nic o Tobie ani o Twoim telefonie. Przechowywane przez {photoMonths} miesięcy.",
+      },
+      {
+        title: "Statystyki użycia",
+        text: "Liczymy wizyty: odwiedzaną stronę, język, telefon czy komputer, witrynę lub link, z którego do nas trafiasz, oraz zrobione zdjęcia. Bez plików cookie, bez adresu IP, nic nie jest zapisywane na Twoim urządzeniu: losowy numer łączy wyłącznie działania z jednej wizyty. Przechowywane przez {eventMonths} miesięcy. Vercel Web Analytics również liczy wyświetlenia stron, bez plików cookie.",
+      },
+      {
+        title: "Opinie",
+        text: "Wiadomości wysłane z Ustawień przechowujemy razem z językiem aplikacji, a Twój e-mail tylko wtedy, gdy go podasz, aby móc Ci odpowiedzieć. Przechowywane przez {feedbackMonths} miesięcy.",
+      },
+      {
+        title: "Na Twoim telefonie",
+        text: "Historia zeskanowanych gier i wybrany język zostają na Twoim telefonie. Wyczyszczenie danych tej witryny w przeglądarce je usuwa.",
+      },
+      {
+        title: "Kto przetwarza dane",
+        text: "Vercel hostuje aplikację, Neon hostuje bazę danych, Google odczytuje zdjęcia (Gemini), a nasz własny serwer odczytuje ich tekst. Dane gier pochodzą z BoardGameGeek: nic o Tobie nie jest tam wysyłane.",
+      },
+      {
+        title: "Twoje prawa",
+        text: "Możesz zapytać, jakie dane o Tobie mamy, albo poprosić o ich usunięcie, przez formularz opinii w Ustawieniach (podaj ten sam e-mail, jeśli wcześniej go podano). Możesz też złożyć skargę do organu ochrony danych (w Polsce: UODO).",
+      },
+    ],
   },
   tabs: { label: "Nawigacja", history: "Historia", scan: "Skanuj", rankings: "Rankingi", search: "Szukaj", settings: "Ustawienia" },
   settings: {

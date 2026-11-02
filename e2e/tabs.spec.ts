@@ -65,6 +65,7 @@ test("Settings sends feedback, with an email only if given, and links to the cod
     "href",
     "https://github.com/anzieu-labs/meeple-scan",
   );
+  await expect(page.getByRole("link", { name: "Privacy" })).toHaveAttribute("href", "/privacy");
   // The BGG logo alone, no credit line.
   await expect(page.getByRole("img", { name: "Powered by BGG" })).toBeVisible();
   await expect(page.getByText("Ratings and game data from BoardGameGeek")).toHaveCount(0);
@@ -92,7 +93,7 @@ test.describe("on a computer", () => {
       }
     });
     await page.goto("/");
-    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Is it any good? Ask the box.");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Scan it before you play it.");
     await expect(page.getByText("Open it on your phone")).toBeVisible();
     await expect(page.locator("main svg path").first()).toBeVisible();
     await expect(page.getByRole("heading", { name: "Rules clarifications" })).toBeVisible();

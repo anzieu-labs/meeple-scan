@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { useCamera } from "@/hooks/use-camera";
 import { isChecked, useGameLookup } from "@/hooks/use-game-lookup";
 import { captureFrame, fromFile } from "@/lib/camera/photo";
+import { track } from "@/lib/events/track";
 import { addToHistory } from "@/lib/history";
 import { useI18n } from "@/lib/i18n/client";
 
@@ -48,7 +49,8 @@ export function Scanner() {
   }, [state]);
 
   const readPhoto = useCallback(
-    async (photo: Blob) => {
+    async (photo: Blob, source: "camera" | "gallery") => {
+      track("photo", { source });
       void loadGameSheet();
       const url = URL.createObjectURL(photo);
       setReading(url);
@@ -67,7 +69,7 @@ export function Scanner() {
     async (event: ChangeEvent<HTMLInputElement>) => {
       const file = event.target.files?.[0];
       event.target.value = "";
-      if (file) void readPhoto(await fromFile(file));
+      if (file) void readPhoto(await fromFile(file), "gallery");
     },
     [readPhoto],
   );
@@ -89,7 +91,7 @@ export function Scanner() {
       return;
     }
     setFlash((n) => n + 1);
-    void readPhoto(await captureFrame(video, frameRef.current?.getBoundingClientRect()));
+    void readPhoto(await captureFrame(video, frameRef.current?.getBoundingClientRect()), "camera");
   }, [cameraFailed, live, startCamera, readPhoto]);
 
   const zoomTarget = Math.min(2, camera.zoom.max);

@@ -46,7 +46,7 @@ export const zhHans: Dictionary = {
   },
   landing: {
     kicker: "桌游扫描器",
-    headline: "好不好玩？问盒子。",
+    headline: "玩之前，先扫一扫。",
     lede: "把手机对准一盒桌游，或者整个桌游柜。Meeple Scan大约两秒就能显示每款游戏的BoardGameGeek评分、复杂度和最佳人数。",
     qrTitle: "在手机上打开",
     qrHint: "用手机相机扫描这个二维码。",
@@ -56,6 +56,12 @@ export const zhHans: Dictionary = {
       { title: "无需账号", text: "无需注册，打开即可扫描" },
       { title: "可安装", text: "添加到主屏幕，无需应用商店" },
       { title: "记录保存在手机上", text: "你的游戏保存在设备上，不在我们的服务器上" },
+    ],
+    screensTitle: "一张照片，数据全知道",
+    screens: [
+      "书架上的每款游戏，点一下就确认",
+      "对准盒子，或整个书架",
+      "评分、复杂度和最佳人数",
     ],
     hotTitle: "BoardGameGeek当前热门",
     faqTitle: "规则答疑",
@@ -94,6 +100,42 @@ export const zhHans: Dictionary = {
       },
     ],
     footerCode: "源代码",
+  },
+  privacy: {
+    title: "隐私",
+    updated: "最后更新：2026年11月",
+    intro:
+      "Meeple Scan是由Alexis Anzieu运营的免费开源应用，无需账号，也没有广告。以下是它保存的全部内容、保存原因和保存期限。",
+    sections: [
+      {
+        title: "你的照片",
+        text: "照片只会被发送去识别，之后即被丢弃：我们从不保存照片。照片会发送到我们的文字识别（OCR）服务器和Google的Gemini API，由它们识别照片上的游戏。我们使用Gemini付费方案：Google不会用这些照片改进其产品。",
+      },
+      {
+        title: "照片留下了什么",
+        text: "为了改进识别效果，我们会保存从盒子上读取的文字、找到的游戏，以及你对结果是否正确的反馈。不包含任何关于你或你手机的信息。保存{photoMonths}个月。",
+      },
+      {
+        title: "使用统计",
+        text: "我们统计访问情况：访问的页面、语言、手机还是电脑、你从哪个网站或链接过来，以及拍摄照片的操作。不使用Cookie，不记录IP地址，也不在你的设备上存储任何内容：一个随机编号只用于关联同一次访问中的操作。保存{eventMonths}个月。Vercel Web Analytics也会统计页面浏览量，同样不使用Cookie。",
+      },
+      {
+        title: "反馈",
+        text: "从设置中发送的留言会与应用语言一起保存；只有在你填写邮箱时才会保存邮箱，用于回复你。保存{feedbackMonths}个月。",
+      },
+      {
+        title: "在你的手机上",
+        text: "你扫描过的游戏历史和语言设置保存在你的手机上。在浏览器中清除本网站的数据即可将其删除。",
+      },
+      {
+        title: "谁处理这些数据",
+        text: "Vercel托管本应用，Neon托管数据库，Google读取照片（Gemini），我们自己的服务器读取照片上的文字。游戏数据来自BoardGameGeek：不会向其发送任何关于你的信息。",
+      },
+      {
+        title: "你的权利",
+        text: "你可以通过设置中的反馈表单，询问我们保存了哪些关于你的信息，或要求删除这些信息（如果你曾填写过邮箱，请提供该邮箱）。你也可以向数据保护监管机构投诉。",
+      },
+    ],
   },
   tabs: { label: "主导航", history: "历史", scan: "扫描", rankings: "排行", search: "搜索", settings: "设置" },
   settings: {

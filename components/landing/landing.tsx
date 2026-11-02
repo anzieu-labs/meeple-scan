@@ -88,6 +88,30 @@ export async function Landing({ locale }: { locale: Locale }) {
         </ul>
       </section>
 
+      {/* The app on a phone, in this language (pnpm screenshots). */}
+      <section className="mx-auto max-w-6xl px-10 pt-24">
+        <h2 className={`${display.className} mb-12 text-center text-4xl font-extrabold text-balance`}>{words.screensTitle}</h2>
+        <ul className="grid grid-cols-3 items-start gap-10">
+          {SCREENS.map((screen, i) => (
+            <li key={screen} className={`flex flex-col items-center gap-5 ${i === 1 ? "" : "mt-10"}`}>
+              <div
+                className={`overflow-hidden rounded-[2.25rem] border-[7px] border-[#103b2c] bg-[#103b2c] shadow-[8px_8px_0_#00875a] ${SCREEN_TILT[i]}`}
+              >
+                <Image
+                  src={`/screens/${locale}/${screen}.jpg`}
+                  alt={words.screens[i]}
+                  width={824}
+                  height={1678}
+                  sizes="256px"
+                  className="block w-64 rounded-[1.75rem]"
+                />
+              </div>
+              <p className="max-w-64 text-center font-semibold text-balance">{words.screens[i]}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+
       <section className="mx-auto max-w-6xl px-10 py-24">
         <h2 className={`${display.className} mb-8 text-4xl font-extrabold text-balance`}>{words.hotTitle}</h2>
         <ol className="grid grid-cols-6 gap-x-5 gap-y-6">
@@ -151,20 +175,30 @@ export async function Landing({ locale }: { locale: Locale }) {
           >
             <Image src={bggLogo} alt={t.bgg.poweredBy} className="h-8 w-auto" />
           </a>
-          <a
-            href={SITE.repository}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2.5 font-semibold text-[#fff8e8]/90 hover:text-[#ffc533]"
-          >
-            <GitHubMark className="size-6" />
-            {words.footerCode}
-          </a>
+          <div className="flex items-center gap-8">
+            <Link href={href("/privacy")} className="font-semibold text-[#fff8e8]/90 hover:text-[#ffc533]">
+              {t.privacy.title}
+            </Link>
+            <a
+              href={SITE.repository}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 font-semibold text-[#fff8e8]/90 hover:text-[#ffc533]"
+            >
+              <GitHubMark className="size-6" />
+              {words.footerCode}
+            </a>
+          </div>
         </div>
       </footer>
     </main>
   );
 }
+
+/** The phone screens, in the order of `landing.screens` (e2e/screenshots/screens.spec.ts makes them). */
+// The scanner in the middle, raised and straight.
+const SCREENS = ["shelf", "scan", "details"] as const;
+const SCREEN_TILT = ["-rotate-3", "", "rotate-3"];
 
 /** The icons of `landing.features`, in its order: recognition, free, no account, installable, local history. */
 const FEATURE_ICONS: LucideIcon[] = [ScanEye, Gift, UserRoundX, Smartphone, History];
@@ -213,7 +247,8 @@ function HotGame({ game, position, locale }: { game: GameCard; position: number;
 async function qrSvg() {
   "use cache";
   cacheLife("max");
-  return QRCode.toString(SITE.url, {
+  // `ref=qr`: visits from the code are counted as such (lib/events).
+  return QRCode.toString(`${SITE.url}/?ref=qr`, {
     type: "svg",
     margin: 0,
     errorCorrectionLevel: "M",

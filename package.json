@@ -14,9 +14,11 @@
     "db:studio": "drizzle-kit studio",
     "test": "vitest run",
     "test:e2e": "playwright test",
+    "screenshots": "playwright test -c playwright.screenshots.config.ts",
     "vercel-build": "drizzle-kit migrate && next build",
     "import:ranks": "node --env-file=.env.local scripts/import-ranks.ts",
-    "export:photo-logs": "node --env-file=.env.local scripts/export-photo-logs.ts"
+    "export:photo-logs": "node --env-file=.env.local scripts/export-photo-logs.ts",
+    "stats": "node --env-file=.env.local scripts/stats.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",

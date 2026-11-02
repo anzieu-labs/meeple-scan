@@ -126,6 +126,8 @@ Open [http://localhost:3000](http://localhost:3000). The camera needs HTTPS on a
 | `pnpm db:studio` | Browse the database (game cache, photo logs, feedback) |
 | `pnpm import:ranks <zip>` | Import BGG's ranks dump into the name index |
 | `pnpm export:photo-logs` | Turn logged photos into evaluation data |
+| `pnpm stats [days]` | Visits by source (QR code, `?ref=`, `?utm_source=`, referring site), how many scanned, photos, installs, feedback |
+| `pnpm screenshots` | The phone screens on the desktop landing, in every language (`public/screens/`; needs `pnpm build`) |
 
 ## Project structure
 
@@ -174,15 +176,18 @@ Photos and results stay in `ocr-eval/data` and `ocr-eval/out`, which are git-ign
 
 ## Deployment
 
-The app is made for Vercel: connect the repository, add the environment variables, and deploy. Each build runs the database migrations first (`vercel-build`). Two cron jobs ([`vercel.json`](vercel.json)) keep the BGG cache fresh: the top 1000 games weekly and the hot list daily.
+The app is made for Vercel: connect the repository, add the environment variables, and deploy. Each build runs the database migrations first (`vercel-build`). Three cron jobs ([`vercel.json`](vercel.json)): the top 1000 BGG games weekly and the hot list daily keep the cache fresh, and a daily cleanup deletes what the privacy page says isn't kept ([`lib/retention.ts`](lib/retention.ts)).
 
 The OCR service runs anywhere Docker does; [`ocr-service/README.md`](ocr-service/README.md) covers running it locally and deploying it on Coolify.
 
 ## Data and privacy
 
-- **Photos are never stored.** Each photo log keeps only the text OCR read, the names Gemini gave, the games shown and what the user confirmed or picked instead, to improve matching. No IP address or device id.
+The app's [privacy page](https://meeple-scan.com/privacy) says the same, for users.
+
+- **Photos are never stored.** They are read by the OCR service and by Gemini on a paid plan (Google doesn't use paid-tier requests to improve its products). Each photo log keeps only the text OCR read, the names Gemini gave, the games shown and what the user confirmed or picked instead, to improve matching. No IP address or device id. Kept 12 months.
+- **Usage events** ([`lib/events`](lib/events)) count visits (page, language, phone or computer, `?ref=`/`?utm_source=` or the referring site), photos (camera or gallery) and installs, in our own `events` table instead of a paid analytics plan. No cookie, no IP address, nothing stored on the device: a random id held in memory ties one page load's events together. Automated browsers and bots aren't counted. Kept 12 months. Read them with `pnpm stats`.
 - History stays on the phone (`localStorage`).
-- Feedback keeps the message, the language, and an email only if the sender gives one.
+- Feedback keeps the message, the language, and an email only if the sender gives one. Kept 24 months.
 
 ## Credits
 

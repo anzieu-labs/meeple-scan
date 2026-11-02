@@ -6,6 +6,8 @@ const remoteURL = process.env.PLAYWRIGHT_BASE_URL;
 
 export default defineConfig({
   testDir: "./e2e",
+  // The landing's screenshots have their own config (pnpm screenshots).
+  testIgnore: ["screenshots/**"],
   fullyParallel: true,
   reporter: "list",
   use: {
