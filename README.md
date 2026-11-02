@@ -110,6 +110,7 @@ Open [http://localhost:3000](http://localhost:3000). The camera needs HTTPS on a
 | `GEMINI_API_KEY` | photos | Gemini key. Use a paid-tier key: free-tier requests may be used for training. `GEMINI_MODEL` overrides `gemini-3.1-flash-lite` |
 | `OCR_URL`, `OCR_API_KEY` | photos | Address and key of the OCR service |
 | `CRON_SECRET` | production | Protects the refresh jobs (`/api/cron/*`); any long random string |
+| `STATS_PASSWORD` | optional | Opens the private stats page at `/stats` (browser login, any user name). Without it the page doesn't exist |
 
 ## Scripts
 
@@ -185,7 +186,7 @@ The OCR service runs anywhere Docker does; [`ocr-service/README.md`](ocr-service
 The app's [privacy page](https://meeple-scan.com/privacy) says the same, for users.
 
 - **Photos are never stored.** They are read by the OCR service and by Gemini on a paid plan (Google doesn't use paid-tier requests to improve its products). Each photo log keeps only the text OCR read, the names Gemini gave, the games shown and what the user confirmed or picked instead, to improve matching. No IP address or device id. Kept 12 months.
-- **Usage events** ([`lib/events`](lib/events)) count visits (page, language, phone or computer, `?ref=`/`?utm_source=` or the referring site), photos (camera or gallery) and installs, in our own `events` table instead of a paid analytics plan. No cookie, no IP address, nothing stored on the device: a random id held in memory ties one page load's events together. Automated browsers and bots aren't counted. Kept 12 months. Read them with `pnpm stats`.
+- **Usage events** ([`lib/events`](lib/events)) count visits (page, language, phone or computer, `?ref=`/`?utm_source=` or the referring site), photos (camera or gallery) and installs, in our own `events` table instead of a paid analytics plan. No cookie, no IP address, nothing stored on the device: a random id held in memory ties one page load's events together. Automated browsers and bots aren't counted. Kept 12 months. Read them with `pnpm stats`, or live at `/stats` (password: `STATS_PASSWORD`), which also lists the feedback.
 - History stays on the phone (`localStorage`).
 - Feedback keeps the message, the language, and an email only if the sender gives one. Kept 24 months.
 

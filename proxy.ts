@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from "next/server";
 
 import { DEFAULT_LOCALE, hasLocale, LOCALE_COOKIE, localePath } from "@/lib/i18n/config";
 import { negotiateLocale } from "@/lib/i18n/negotiate";
+import { STATS_PATH, statsAccess } from "@/lib/stats/auth";
 
 /**
  * Picks each page's language. An address with a language ("/fr/rankings") is that language, as is. One
@@ -12,6 +13,19 @@ import { negotiateLocale } from "@/lib/i18n/negotiate";
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   const first = pathname.split("/")[1];
+
+  // The private stats page, in any language: behind a password, and never cached.
+  const page = hasLocale(first) ? pathname.slice(first.length + 1) : pathname;
+  if (page === STATS_PATH || page.startsWith(`${STATS_PATH}/`)) {
+    const access = statsAccess(request.headers.get("authorization"));
+    if (access === "off") return new NextResponse("Not found", { status: 404 });
+    if (access === "ask") {
+      return new NextResponse("Password required", {
+        status: 401,
+        headers: { "WWW-Authenticate": 'Basic realm="Meeple Scan stats", charset="UTF-8"', "Cache-Control": "no-store" },
+      });
+    }
+  }
 
   if (first === DEFAULT_LOCALE) {
     const url = request.nextUrl.clone();

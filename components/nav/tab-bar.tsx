@@ -54,6 +54,8 @@ export function TabBar() {
         pathname === "/" ? "z-[52]" : "z-40",
         // On a computer, the landing and the privacy page have their own header and footer instead.
         (pathname === "/" || pathname === "/privacy") && "lg:hidden",
+        // The private stats page is no part of the app.
+        pathname.startsWith("/stats") && "hidden",
       )}
     >
       {TABS.map(({ path, key, icon: Icon, main }) => {

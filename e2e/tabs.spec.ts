@@ -117,3 +117,9 @@ test.describe("on a computer", () => {
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Confidentialité");
   });
 });
+
+test("the private stats page doesn't exist without its password set on the server", async ({ request }) => {
+  // The e2e server runs without STATS_PASSWORD.
+  expect((await request.get("/stats")).status()).toBe(404);
+  expect((await request.get("/fr/stats")).status()).toBe(404);
+});
