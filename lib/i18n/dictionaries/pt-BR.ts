@@ -106,7 +106,7 @@ export const ptBR: Dictionary = {
     title: "Privacidade",
     updated: "Última atualização: novembro de 2026",
     intro:
-      "O Meeple Scan é um app gratuito e de código aberto mantido por Alexis Anzieu, sem conta e sem anúncios. Aqui está tudo o que ele guarda, por quê e por quanto tempo.",
+      "O Meeple Scan é um app gratuito e de código aberto mantido por Anzieu Labs Inc., sem conta e sem anúncios. Aqui está tudo o que ele guarda, por quê e por quanto tempo.",
     sections: [
       {
         title: "Suas fotos",

@@ -6,8 +6,8 @@ import { Check, ChevronDown, Globe2 } from "lucide-react";
 import { switchLocale, useI18n } from "@/lib/i18n/client";
 import { LOCALE_NAMES, LOCALES, type Locale } from "@/lib/i18n/config";
 
-/** The landing's language picker: a tag on the box lid, opening the ten languages; the choice is remembered. */
-export function LanguageSwitcher() {
+/** The desktop pages' language picker: reopens `path` in the language picked, and remembers the choice. */
+export function LanguageSwitcher({ path }: { path: string }) {
   const { locale, t } = useI18n();
   return (
     <Menu.Root>
@@ -22,7 +22,7 @@ export function LanguageSwitcher() {
       <Menu.Portal>
         <Menu.Positioner align="end" sideOffset={10} className="z-50">
           <Menu.Popup className="min-w-52 rounded-2xl border-2 border-[#103b2c] bg-white p-1.5 text-[#103b2c] shadow-[5px_5px_0_#103b2c] outline-none">
-            <Menu.RadioGroup value={locale} onValueChange={(value: Locale) => value !== locale && switchLocale(value, "/")}>
+            <Menu.RadioGroup value={locale} onValueChange={(value: Locale) => value !== locale && switchLocale(value, path)}>
               {LOCALES.map((option) => (
                 <Menu.RadioItem
                   key={option}

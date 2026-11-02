@@ -205,4 +205,4 @@ and `pnpm build && pnpm test:e2e` for changes to the interface. Agent and contri
 
 ## License
 
-[MIT](LICENSE) © 2026 Alexis Anzieu. Game data, ratings and box art belong to BoardGameGeek and the games' publishers, and are not covered by this license.
+[MIT](LICENSE) © 2026 Anzieu Labs Inc. Game data, ratings and box art belong to BoardGameGeek and the games' publishers, and are not covered by this license.

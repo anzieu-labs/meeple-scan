@@ -105,7 +105,7 @@ export const zhHans: Dictionary = {
     title: "隐私",
     updated: "最后更新：2026年11月",
     intro:
-      "Meeple Scan是由Alexis Anzieu运营的免费开源应用，无需账号，也没有广告。以下是它保存的全部内容、保存原因和保存期限。",
+      "Meeple Scan是由Anzieu Labs Inc.运营的免费开源应用，无需账号，也没有广告。以下是它保存的全部内容、保存原因和保存期限。",
     sections: [
       {
         title: "你的照片",

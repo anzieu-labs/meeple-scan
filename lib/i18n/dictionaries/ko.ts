@@ -106,7 +106,7 @@ export const ko: Dictionary = {
     title: "개인정보 보호",
     updated: "최종 업데이트: 2026년 11월",
     intro:
-      "Meeple Scan은 Alexis Anzieu가 운영하는 무료 오픈 소스 앱으로, 계정도 광고도 없어요. 무엇을, 왜, 얼마 동안 보관하는지 모두 알려 드릴게요.",
+      "Meeple Scan은 Anzieu Labs Inc.가 운영하는 무료 오픈 소스 앱으로, 계정도 광고도 없어요. 무엇을, 왜, 얼마 동안 보관하는지 모두 알려 드릴게요.",
     sections: [
       {
         title: "내 사진",

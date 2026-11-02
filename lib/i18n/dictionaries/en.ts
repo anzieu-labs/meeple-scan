@@ -113,7 +113,7 @@ export const en = {
     title: "Privacy",
     updated: "Last updated: November 2026",
     intro:
-      "Meeple Scan is a free, open-source app run by Alexis Anzieu, with no account and no ads. Here is everything it keeps, why, and for how long.",
+      "Meeple Scan is a free, open-source app run by Anzieu Labs Inc., with no account and no ads. Here is everything it keeps, why, and for how long.",
     sections: [
       {
         title: "Your photos",

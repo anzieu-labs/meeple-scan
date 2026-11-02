@@ -106,7 +106,7 @@ export const it: Dictionary = {
     title: "Privacy",
     updated: "Ultimo aggiornamento: novembre 2026",
     intro:
-      "Meeple Scan è un'app gratuita e open source gestita da Alexis Anzieu, senza account e senza pubblicità. Ecco tutto ciò che conserva, perché e per quanto tempo.",
+      "Meeple Scan è un'app gratuita e open source gestita da Anzieu Labs Inc., senza account e senza pubblicità. Ecco tutto ciò che conserva, perché e per quanto tempo.",
     sections: [
       {
         title: "Le tue foto",

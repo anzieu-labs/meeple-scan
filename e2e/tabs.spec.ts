@@ -104,4 +104,16 @@ test.describe("on a computer", () => {
     // The phone is the way in: no links to the app's pages, only the QR code.
     await expect(page.getByRole("main").getByRole("link", { name: /rankings|search|what's hot/i })).toHaveCount(0);
   });
+
+  test("the privacy page has the landing's header and footer, and its language picker stays on it", async ({ page }) => {
+    await page.goto("/privacy");
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Privacy");
+    await expect(page.getByText("run by Anzieu Labs Inc.")).toBeVisible();
+    await expect(page.getByTestId("tab-bar")).toBeHidden();
+    await expect(page.getByRole("contentinfo").getByRole("img", { name: "Powered by BGG" })).toBeVisible();
+    await page.getByRole("button", { name: "Language: English" }).click();
+    await page.getByRole("menuitemradio", { name: "Français" }).click();
+    await expect(page).toHaveURL(/\/fr\/privacy$/);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Confidentialité");
+  });
 });

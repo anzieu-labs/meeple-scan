@@ -106,7 +106,7 @@ export const ja: Dictionary = {
     title: "プライバシー",
     updated: "最終更新：2026年11月",
     intro:
-      "Meeple Scanは、Alexis Anzieuが運営する無料のオープンソースアプリです。アカウントも広告もありません。保存する情報、その理由、保存期間をすべてご説明します。",
+      "Meeple Scanは、Anzieu Labs Inc.が運営する無料のオープンソースアプリです。アカウントも広告もありません。保存する情報、その理由、保存期間をすべてご説明します。",
     sections: [
       {
         title: "撮影した写真",
