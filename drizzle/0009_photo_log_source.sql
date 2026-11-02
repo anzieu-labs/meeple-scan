@@ -1,0 +1,1 @@
+ALTER TABLE "photo_logs" ADD COLUMN "source" text;

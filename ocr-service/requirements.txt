@@ -1,0 +1,7 @@
+# 3.3.x crashes in the oneDNN path on the VPS CPU (Haswell, AVX2):
+# "ConvertPirAttribute2RuntimeAttribute not support [pir::ArrayAttribute<pir::DoubleAttribute>]".
+# 3.2.2 runs oneDNN there: ~1.2 s per image vs ~5 s for 3.3.1 without oneDNN.
+paddlepaddle==3.2.2
+paddleocr==3.7.0
+fastapi==0.162.0
+uvicorn==0.54.0
