@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { fr } from "@/lib/i18n/dictionaries/fr";
 import { compactCount } from "@/lib/i18n/format";
 
-import { ageRow, complexityLabel, formatCounts, playersRow, playTimeText, ratingTier } from "./labels";
+import { ageRow, complexityLabel, formatCounts, playersRow, playTimeText, ratingTier, statFigure } from "./labels";
 
 describe("ratingTier", () => {
   it.each([
@@ -74,5 +74,37 @@ describe("other card texts", () => {
     expect(playersRow({ bestPlayers: [], recommendedPlayers: [], minPlayers: 1, maxPlayers: 1 }, fr.details, "fr")?.title).toBe("1 joueur");
     expect(ageRow({ minAge: 10, communityAge: 8 }, fr.details)).toEqual({ title: "Dès 10 ans", subtitle: "La communauté dit 8 ans et plus" });
     expect(compactCount("fr", 4363)).toBe("4,4\u00a0k");
+  });
+});
+
+describe("statFigure", () => {
+  const catan = {
+    weight: 2.28,
+    minPlayTime: 60,
+    maxPlayTime: 120,
+    bestPlayers: [4],
+    recommendedPlayers: [3, 4],
+    minPlayers: 3,
+    maxPlayers: 4,
+  };
+  const unknown = { ...catan, weight: null, minPlayTime: null, maxPlayTime: null, bestPlayers: [], minPlayers: null, maxPlayers: null };
+
+  it("gives the short figure, the word under it and what is read aloud", () => {
+    expect(statFigure("complexity", catan)).toEqual({ value: "2.3", label: "Medium-light", spoken: "Medium-light complexity, 2.3/5" });
+    expect(statFigure("time", catan)).toEqual({ value: "60–120", label: "min", spoken: "60–120 min" });
+    expect(statFigure("players", catan)).toEqual({ value: "4", label: "Best count", spoken: "Best with 4" });
+    // Too few votes for a best count: the box's range.
+    expect(statFigure("players", { ...catan, bestPlayers: [] })).toMatchObject({ value: "3–4", label: "Players" });
+  });
+
+  it("shows a dash and the stat's name when BGG doesn't know it", () => {
+    expect(statFigure("complexity", unknown)).toEqual({ value: null, label: "Complexity", spoken: "Complexity: –" });
+    expect(statFigure("time", unknown).value).toBeNull();
+    expect(statFigure("players", unknown).value).toBeNull();
+  });
+
+  it("speaks French", () => {
+    expect(statFigure("complexity", catan, fr, "fr")).toMatchObject({ value: "2,3", label: "Moyenne-légère" });
+    expect(statFigure("players", catan, fr, "fr")).toMatchObject({ label: "Idéal", spoken: "Idéal à 4" });
   });
 });

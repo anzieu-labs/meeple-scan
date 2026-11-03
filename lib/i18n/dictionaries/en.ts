@@ -162,6 +162,7 @@ export const en = {
       failed: "Your message couldn't be sent. Try again.",
     },
     github: "Source code on GitHub",
+    scanStat: "Shown after a scan",
   },
   scanner: {
     cameraErrors: {
@@ -229,6 +230,10 @@ export const en = {
     score: "Rating {value} out of 10, {label}",
     fewRatings: "Few ratings",
     tiers: { excellent: "Excellent", good: "Good", average: "Average", poor: "Poor", none: "Not enough ratings" },
+    stats: { rating: "Rating", complexity: "Complexity", time: "Playing time", players: "Players" },
+    weights: { light: "Light", mediumLight: "Medium-light", medium: "Medium", mediumHeavy: "Medium-heavy", heavy: "Heavy" },
+    minutes: "min",
+    bestCount: "Best count",
   },
   details: {
     rated: {
@@ -308,6 +313,25 @@ export const en = {
     title: "The app stopped working",
     text: "Something went wrong on this page. Your history is still saved.",
     retry: "Try again",
+  },
+  changelog: {
+    title: "What's new",
+    intro: "Every version of Meeple Scan, newest first, and what it changed.",
+    version: "Version {version}",
+    /** What each version changed, for people using the app (not a commit log). Newest first, matching RELEASES. */
+    releases: {
+      "1.1.0": [
+        "Choose what shows beside each game you scan: its rating, complexity, playing time or best player count. It's in Settings.",
+        "This page, to see what changed in each version.",
+      ],
+      "1.0.0": [
+        "Photograph a board game box, or a whole shelf, and see each game's BoardGameGeek rating, complexity and best player count.",
+        "AI vision and text reading get about 9 boxes in 10 right on the first try. When it's wrong, you pick the right game in a tap.",
+        "If the camera is blocked, choose a photo from your gallery instead.",
+        "Your history stays on your phone. Plus today's hot games, the top 100 and search by name.",
+        "In 10 languages, free, with no account, and it installs on your home screen.",
+      ],
+    },
   },
 };
 

@@ -155,6 +155,7 @@ export const de: Dictionary = {
       failed: "Deine Nachricht konnte nicht gesendet werden. Versuch es noch einmal.",
     },
     github: "Quellcode auf GitHub",
+    scanStat: "Nach dem Scannen angezeigt",
   },
   scanner: {
     cameraErrors: {
@@ -225,6 +226,10 @@ export const de: Dictionary = {
     score: "Wertung {value} von 10, {label}",
     fewRatings: "Kaum Wertungen",
     tiers: { excellent: "Exzellent", good: "Gut", average: "Mittelmäßig", poor: "Schwach", none: "Zu wenig Daten" },
+    stats: { rating: "Bewertung", complexity: "Komplexität", time: "Spieldauer", players: "Spieler" },
+    weights: { light: "Gering", mediumLight: "Eher gering", medium: "Mittel", mediumHeavy: "Eher hoch", heavy: "Hoch" },
+    minutes: "Min.",
+    bestCount: "Am besten",
   },
   details: {
     rated: {
@@ -304,5 +309,23 @@ export const de: Dictionary = {
     title: "Die App funktioniert nicht mehr",
     text: "Auf dieser Seite ist etwas schiefgelaufen. Dein Verlauf ist noch gespeichert.",
     retry: "Erneut versuchen",
+  },
+  changelog: {
+    title: "Neuigkeiten",
+    intro: "Jede Version von Meeple Scan, die neueste zuerst, und was sie geändert hat.",
+    version: "Version {version}",
+    releases: {
+      "1.1.0": [
+        "Wähle, was neben jedem gescannten Spiel steht: Wertung, Komplexität, Spieldauer oder beste Spieleranzahl. Du findest es in den Einstellungen.",
+        "Diese Seite, damit du siehst, was sich in jeder Version geändert hat.",
+      ],
+      "1.0.0": [
+        "Fotografiere eine Spielschachtel oder ein ganzes Regal und sieh für jedes Spiel die BoardGameGeek-Wertung, die Komplexität und die beste Spieleranzahl.",
+        "KI-Bilderkennung und Texterkennung erkennen etwa 9 von 10 Schachteln beim ersten Versuch. Liegt sie falsch, wählst du das richtige Spiel mit einem Tippen.",
+        "Ist die Kamera blockiert, wähle stattdessen ein Foto aus deiner Galerie.",
+        "Dein Verlauf bleibt auf deinem Handy. Dazu die angesagten Spiele, die Top 100 und die Suche nach Namen.",
+        "In 10 Sprachen, kostenlos, ohne Konto, und auf dem Startbildschirm installierbar.",
+      ],
+    },
   },
 };

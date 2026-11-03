@@ -155,6 +155,7 @@ export const it: Dictionary = {
       failed: "Impossibile inviare il messaggio. Riprova.",
     },
     github: "Codice sorgente su GitHub",
+    scanStat: "Mostrato dopo la scansione",
   },
   scanner: {
     cameraErrors: {
@@ -224,6 +225,10 @@ export const it: Dictionary = {
     score: "Voto {value} su 10, {label}",
     fewRatings: "Pochi voti",
     tiers: { excellent: "Eccellente", good: "Buono", average: "Nella media", poor: "Scarso", none: "Senza voto" },
+    stats: { rating: "Voto", complexity: "Complessità", time: "Durata", players: "Giocatori" },
+    weights: { light: "Bassa", mediumLight: "Medio-bassa", medium: "Media", mediumHeavy: "Medio-alta", heavy: "Alta" },
+    minutes: "min",
+    bestCount: "Ideale",
   },
   details: {
     rated: {
@@ -303,5 +308,23 @@ export const it: Dictionary = {
     title: "L'app ha smesso di funzionare",
     text: "Qualcosa è andato storto in questa pagina. La tua cronologia è ancora salvata.",
     retry: "Riprova",
+  },
+  changelog: {
+    title: "Novità",
+    intro: "Ogni versione di Meeple Scan, dalla più recente, e cosa ha cambiato.",
+    version: "Versione {version}",
+    releases: {
+      "1.1.0": [
+        "Scegli cosa appare accanto a ogni gioco scansionato: voto, complessità, durata o numero ideale di giocatori. Lo trovi nelle Impostazioni.",
+        "Questa pagina, per vedere cosa cambia a ogni versione.",
+      ],
+      "1.0.0": [
+        "Fotografa la scatola di un gioco, o tutto uno scaffale, e vedi voto BoardGameGeek, complessità e numero ideale di giocatori di ogni gioco.",
+        "La visione IA e la lettura del testo riconoscono circa 9 scatole su 10 al primo colpo. Se sbaglia, scegli il gioco giusto con un tocco.",
+        "Se la fotocamera è bloccata, scegli invece una foto dalla galleria.",
+        "La cronologia resta sul tuo telefono. In più: i giochi del momento, la top 100 e la ricerca per nome.",
+        "In 10 lingue, gratis, senza account, e si installa nella schermata Home.",
+      ],
+    },
   },
 };

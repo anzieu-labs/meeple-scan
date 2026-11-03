@@ -155,6 +155,7 @@ export const ko: Dictionary = {
       failed: "메시지를 보내지 못했어요. 다시 시도해 주세요.",
     },
     github: "GitHub 소스 코드",
+    scanStat: "스캔 후 표시",
   },
   scanner: {
     cameraErrors: {
@@ -222,6 +223,10 @@ export const ko: Dictionary = {
     score: "평점 10점 만점에 {value}점, {label}",
     fewRatings: "평가 적음",
     tiers: { excellent: "훌륭함", good: "좋음", average: "보통", poor: "아쉬움", none: "평가 부족" },
+    stats: { rating: "평점", complexity: "난이도", time: "플레이 시간", players: "인원" },
+    weights: { light: "낮음", mediumLight: "중하", medium: "보통", mediumHeavy: "중상", heavy: "높음" },
+    minutes: "분",
+    bestCount: "베스트 인원",
   },
   details: {
     rated: {
@@ -301,5 +306,23 @@ export const ko: Dictionary = {
     title: "앱이 멈췄어요",
     text: "이 페이지에서 문제가 발생했어요. 기록은 그대로 저장되어 있어요.",
     retry: "다시 시도",
+  },
+  changelog: {
+    title: "새로운 기능",
+    intro: "Meeple Scan의 모든 버전과 바뀐 점을 최신순으로 정리했어요.",
+    version: "버전 {version}",
+    releases: {
+      "1.1.0": [
+        "스캔한 게임 옆에 보여줄 항목을 평점, 난이도, 플레이 시간, 베스트 인원 중에서 고를 수 있어요. 설정에서 바꿀 수 있어요.",
+        "버전마다 바뀐 점을 볼 수 있는 이 페이지가 생겼어요.",
+      ],
+      "1.0.0": [
+        "보드게임 박스나 책장 전체를 찍으면 게임별 BoardGameGeek 평점, 난이도, 베스트 인원을 보여줘요.",
+        "AI 이미지 인식과 글자 읽기로 박스 10개 중 약 9개를 한 번에 맞혀요. 틀리면 탭 한 번으로 맞는 게임을 고르면 돼요.",
+        "카메라가 막혀 있으면 갤러리에서 사진을 골라도 돼요.",
+        "기록은 폰에만 저장돼요. 인기 게임, 톱 100, 이름 검색도 있어요.",
+        "10개 언어 지원, 무료, 계정 없이 쓰고, 홈 화면에 설치할 수 있어요.",
+      ],
+    },
   },
 };

@@ -66,6 +66,7 @@ test("Settings sends feedback, with an email only if given, and links to the cod
     "https://github.com/anzieu-labs/meeple-scan",
   );
   await expect(page.getByRole("link", { name: "Privacy" })).toHaveAttribute("href", "/privacy");
+  await expect(page.getByRole("link", { name: "What's new" })).toHaveAttribute("href", "/changelog");
   // The BGG logo alone, no credit line.
   await expect(page.getByRole("img", { name: "Powered by BGG" })).toBeVisible();
   await expect(page.getByText("Ratings and game data from BoardGameGeek")).toHaveCount(0);
@@ -115,6 +116,16 @@ test.describe("on a computer", () => {
     await page.getByRole("menuitemradio", { name: "Français" }).click();
     await expect(page).toHaveURL(/\/fr\/privacy$/);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Confidentialité");
+  });
+
+  test("the footer links to the changelog, which lists every version newest first", async ({ page }) => {
+    await page.goto("/fr");
+    await page.getByRole("link", { name: "Nouveautés" }).click();
+    await expect(page).toHaveURL(/\/fr\/changelog$/);
+    await expect(page.getByRole("heading", { level: 1 })).toHaveText("Nouveautés");
+    await expect(page.getByTestId("release").first()).toContainText("Version 1.1.0");
+    await expect(page.getByTestId("release").first()).toContainText("3 novembre 2026");
+    await expect(page.getByTestId("tab-bar")).toBeHidden();
   });
 });
 

@@ -155,6 +155,7 @@ export const ja: Dictionary = {
       failed: "メッセージを送信できませんでした。もう一度お試しください。",
     },
     github: "GitHubのソースコード",
+    scanStat: "スキャン後に表示",
   },
   scanner: {
     cameraErrors: {
@@ -222,6 +223,10 @@ export const ja: Dictionary = {
     score: "評価 10点中{value}点、{label}",
     fewRatings: "評価が少ない",
     tiers: { excellent: "とても良い", good: "良い", average: "普通", poor: "いまいち", none: "評価不足" },
+    stats: { rating: "評価", complexity: "重さ", time: "プレイ時間", players: "プレイ人数" },
+    weights: { light: "軽量級", mediumLight: "中軽量級", medium: "中量級", mediumHeavy: "中重量級", heavy: "重量級" },
+    minutes: "分",
+    bestCount: "ベスト人数",
   },
   details: {
     rated: {
@@ -301,5 +306,23 @@ export const ja: Dictionary = {
     title: "アプリが停止しました",
     text: "このページで問題が発生しました。履歴は保存されたままです。",
     retry: "再試行",
+  },
+  changelog: {
+    title: "新着情報",
+    intro: "Meeple Scanの各バージョンと変更点を、新しい順に紹介します。",
+    version: "バージョン {version}",
+    releases: {
+      "1.1.0": [
+        "スキャンしたゲームの横に表示する項目を、評価・重さ・プレイ時間・ベストプレイ人数から選べるようになりました。設定から変更できます。",
+        "各バージョンの変更点がわかる、このページを追加しました。",
+      ],
+      "1.0.0": [
+        "ボードゲームの箱や棚まるごとを撮影すると、各ゲームのBoardGameGeek評価、重さ、ベストプレイ人数が表示されます。",
+        "AIの画像認識と文字読み取りで、約9割の箱を一度で正しく認識。違っていても、タップひとつで正しいゲームを選べます。",
+        "カメラが使えないときは、ギャラリーの写真を選べます。",
+        "履歴はスマホの中だけに保存。注目のゲーム、トップ100、名前での検索もあります。",
+        "10言語に対応、無料、アカウント不要。ホーム画面にインストールできます。",
+      ],
+    },
   },
 };

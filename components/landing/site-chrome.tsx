@@ -38,7 +38,7 @@ export function SiteHeader({ locale, path }: { locale: Locale; path: string }) {
   );
 }
 
-/** The desktop pages' footer: the logo, BGG's attribution, the privacy page and the source code. */
+/** The desktop pages' footer: the logo, BGG's attribution, what's new, the privacy page and the source code. */
 export function SiteFooter({ locale }: { locale: Locale }) {
   const t = getDictionary(locale);
   const words = t.landing;
@@ -62,6 +62,9 @@ export function SiteFooter({ locale }: { locale: Locale }) {
           <Image src={bggLogo} alt={t.bgg.poweredBy} className="h-8 w-auto" />
         </a>
         <div className="flex items-center gap-8">
+          <Link href={href("/changelog")} className="font-semibold text-[#fff8e8]/90 hover:text-[#ffc533]">
+            {t.changelog.title}
+          </Link>
           <Link href={href("/privacy")} className="font-semibold text-[#fff8e8]/90 hover:text-[#ffc533]">
             {t.privacy.title}
           </Link>

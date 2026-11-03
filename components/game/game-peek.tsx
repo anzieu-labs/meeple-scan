@@ -4,10 +4,10 @@ import type { GameCard } from "@/lib/game/types";
 import { useI18n } from "@/lib/i18n/client";
 
 import { GameThumb } from "./game-thumb";
-import { ScoreBadge } from "./score-badge";
+import { StatBadge } from "./stat-badge";
 
 /**
- * The always-visible part of the sheet: box art, name and the score circle. `locked`: the game isn't
+ * The always-visible part of the sheet: box art, name and the circle with the stat chosen in Settings. `locked`: the game isn't
  * confirmed yet, so a question mark stands in for its score.
  */
 export function GamePeek({ game, guess = false, locked = false }: { game: GameCard; guess?: boolean; locked?: boolean }) {
@@ -24,7 +24,7 @@ export function GamePeek({ game, guess = false, locked = false }: { game: GameCa
           )}
         </p>
       </div>
-      {locked ? <LockedScore /> : <ScoreBadge game={game} />}
+      {locked ? <LockedScore /> : <StatBadge game={game} />}
     </div>
   );
 }

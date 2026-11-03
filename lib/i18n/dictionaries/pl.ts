@@ -155,6 +155,7 @@ export const pl: Dictionary = {
       failed: "Nie udało się wysłać wiadomości. Spróbuj ponownie.",
     },
     github: "Kod źródłowy na GitHubie",
+    scanStat: "Pokazywane po skanowaniu",
   },
   scanner: {
     cameraErrors: {
@@ -230,6 +231,10 @@ export const pl: Dictionary = {
     score: "Ocena {value} na 10, {label}",
     fewRatings: "Mało ocen",
     tiers: { excellent: "Znakomita", good: "Dobra", average: "Przeciętna", poor: "Słaba", none: "Za mało ocen" },
+    stats: { rating: "Ocena", complexity: "Złożoność", time: "Czas gry", players: "Gracze" },
+    weights: { light: "Niska", mediumLight: "Średnio-niska", medium: "Średnia", mediumHeavy: "Średnio-wysoka", heavy: "Wysoka" },
+    minutes: "min",
+    bestCount: "Najlepiej",
   },
   details: {
     rated: {
@@ -319,5 +324,23 @@ export const pl: Dictionary = {
     title: "Aplikacja przestała działać",
     text: "Coś poszło nie tak na tej stronie. Twoja historia jest nadal zapisana.",
     retry: "Spróbuj ponownie",
+  },
+  changelog: {
+    title: "Co nowego",
+    intro: "Każda wersja Meeple Scan, od najnowszej, i co w niej się zmieniło.",
+    version: "Wersja {version}",
+    releases: {
+      "1.1.0": [
+        "Wybierz, co widać obok każdej zeskanowanej gry: ocenę, złożoność, czas gry albo najlepszą liczbę graczy. Znajdziesz to w Ustawieniach.",
+        "Ta strona, żeby widzieć, co zmienia się w każdej wersji.",
+      ],
+      "1.0.0": [
+        "Zrób zdjęcie pudełka gry albo całej półki i zobacz ocenę BoardGameGeek, złożoność i najlepszą liczbę graczy każdej gry.",
+        "Rozpoznawanie obrazu przez AI i odczyt tekstu trafiają w około 9 na 10 pudełek za pierwszym razem. Gdy się pomyli, wybierasz właściwą grę jednym dotknięciem.",
+        "Jeśli aparat jest zablokowany, wybierz zdjęcie z galerii.",
+        "Historia zostaje na twoim telefonie. Do tego gorące gry, top 100 i wyszukiwanie po nazwie.",
+        "W 10 językach, za darmo, bez konta, z instalacją na ekranie głównym.",
+      ],
+    },
   },
 };

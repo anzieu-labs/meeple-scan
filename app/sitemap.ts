@@ -7,6 +7,7 @@ const PAGES: { path: string; changeFrequency: "daily" | "monthly"; priority: num
   { path: "/", changeFrequency: "monthly", priority: 1 },
   { path: "/rankings", changeFrequency: "daily", priority: 0.8 },
   { path: "/search", changeFrequency: "monthly", priority: 0.5 },
+  { path: "/changelog", changeFrequency: "monthly", priority: 0.2 },
   { path: "/privacy", changeFrequency: "monthly", priority: 0.2 },
 ];
 

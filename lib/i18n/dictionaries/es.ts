@@ -155,6 +155,7 @@ export const es: Dictionary = {
       failed: "No se ha podido enviar tu mensaje. Inténtalo de nuevo.",
     },
     github: "Código fuente en GitHub",
+    scanStat: "Se muestra al escanear",
   },
   scanner: {
     cameraErrors: {
@@ -224,6 +225,10 @@ export const es: Dictionary = {
     score: "Nota {value} sobre 10, {label}",
     fewRatings: "Pocos votos",
     tiers: { excellent: "Excelente", good: "Bueno", average: "Normal", poor: "Flojo", none: "Sin nota" },
+    stats: { rating: "Nota", complexity: "Complejidad", time: "Duración", players: "Jugadores" },
+    weights: { light: "Baja", mediumLight: "Media-baja", medium: "Media", mediumHeavy: "Media-alta", heavy: "Alta" },
+    minutes: "min",
+    bestCount: "Ideal",
   },
   details: {
     rated: {
@@ -303,5 +308,23 @@ export const es: Dictionary = {
     title: "La app ha dejado de funcionar",
     text: "Algo ha salido mal en esta página. Tu historial sigue guardado.",
     retry: "Reintentar",
+  },
+  changelog: {
+    title: "Novedades",
+    intro: "Cada versión de Meeple Scan, de la más reciente a la más antigua, y lo que cambió.",
+    version: "Versión {version}",
+    releases: {
+      "1.1.0": [
+        "Elige qué se muestra junto a cada juego que escaneas: su nota, complejidad, duración o mejor número de jugadores. Está en Ajustes.",
+        "Esta página, para ver qué cambió en cada versión.",
+      ],
+      "1.0.0": [
+        "Fotografía una caja de juego, o toda una estantería, y ve la nota BoardGameGeek, la complejidad y el mejor número de jugadores de cada juego.",
+        "La visión por IA y la lectura de texto aciertan unas 9 de cada 10 cajas al primer intento. Si falla, eliges el juego correcto con un toque.",
+        "Si la cámara está bloqueada, elige una foto de tu galería.",
+        "Tu historial se queda en tu teléfono. Además: los juegos del momento, el top 100 y la búsqueda por nombre.",
+        "En 10 idiomas, gratis, sin cuenta, y se instala en tu pantalla de inicio.",
+      ],
+    },
   },
 };

@@ -52,8 +52,8 @@ export function TabBar() {
         "fixed inset-x-3 bottom-[max(0.75rem,env(safe-area-inset-bottom))] mx-auto flex max-w-md items-stretch gap-1 rounded-full border border-border/60 bg-background/85 p-1.5 shadow-[0_8px_30px_rgba(0,0,0,0.25)] backdrop-blur-xl landscape-phone:hidden",
         // Over the scan sheet, which rests behind it; under the game sheets other pages open.
         pathname === "/" ? "z-[52]" : "z-40",
-        // On a computer, the landing and the privacy page have their own header and footer instead.
-        (pathname === "/" || pathname === "/privacy") && "lg:hidden",
+        // On a computer, the landing, the privacy page and the changelog have their own header and footer instead.
+        (pathname === "/" || pathname === "/privacy" || pathname === "/changelog") && "lg:hidden",
         // The private stats page is no part of the app.
         pathname.startsWith("/stats") && "hidden",
       )}

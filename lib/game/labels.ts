@@ -1,6 +1,7 @@
 import type { Locale } from "@/lib/i18n/config";
 import { en, type Dictionary } from "@/lib/i18n/dictionaries/en";
-import { fill, plural } from "@/lib/i18n/format";
+import { fill, formatRating, plural } from "@/lib/i18n/format";
+import type { ScanStat } from "@/lib/scan-stat";
 
 import type { GameCard } from "./types";
 
@@ -17,12 +18,16 @@ export function ratingTier(game: Pick<GameCard, "ratingAverage" | "usersRated">)
 
 type Details = Dictionary["details"];
 
+export type WeightLevel = keyof Details["complexity"];
+
+/** Where a BGG weight (1–5) sits, from light to heavy. */
+export function weightLevel(weight: number): WeightLevel {
+  return weight <= 1.5 ? "light" : weight <= 2.5 ? "mediumLight" : weight <= 3.5 ? "medium" : weight <= 4.5 ? "mediumHeavy" : "heavy";
+}
+
 /** BGG weight (1–5) in words, "Medium-light complexity"; not a judgement, heavier isn't worse. */
 export function complexityLabel(weight: number | null, t: Details = en.details) {
-  if (weight == null) return null;
-  const level =
-    weight <= 1.5 ? "light" : weight <= 2.5 ? "mediumLight" : weight <= 3.5 ? "medium" : weight <= 4.5 ? "mediumHeavy" : "heavy";
-  return t.complexity[level];
+  return weight == null ? null : t.complexity[weightLevel(weight)];
 }
 
 /** [1,2,3,5] -> "1–3, 5" */
@@ -76,4 +81,38 @@ export function playTimeText(game: Pick<GameCard, "minPlayTime" | "maxPlayTime">
   const { minPlayTime: min, maxPlayTime: max } = game;
   if (!min && !max) return null;
   return fill(t.minutes, { time: !max || max === min ? `${min ?? max}` : `${min}–${max}` });
+}
+
+/**
+ * A game's complexity, playing time or player count as the scan screen shows it: the short figure ("2.4",
+ * "30–60", "3–4"), the word under it ("Medium", "min", "Best count") and the whole of it read aloud. The
+ * figure is null when BGG doesn't know it.
+ */
+export function statFigure(
+  stat: Exclude<ScanStat, "rating">,
+  game: Pick<GameCard, "weight" | "minPlayTime" | "maxPlayTime" | "bestPlayers" | "recommendedPlayers" | "minPlayers" | "maxPlayers">,
+  t: Dictionary = en,
+  locale: Locale = "en",
+): { value: string | null; label: string; spoken: string } {
+  const none = { value: null, label: t.game.stats[stat], spoken: `${t.game.stats[stat]}: –` };
+  switch (stat) {
+    case "complexity": {
+      if (game.weight == null) return none;
+      const value = formatRating(locale, game.weight);
+      return { value, label: t.game.weights[weightLevel(game.weight)], spoken: `${complexityLabel(game.weight, t.details)}, ${value}/5` };
+    }
+    case "time": {
+      const spoken = playTimeText(game, t.details);
+      if (!spoken) return none;
+      const { minPlayTime: min, maxPlayTime: max } = game;
+      return { value: !max || max === min ? `${min ?? max}` : `${min}–${max}`, label: t.game.minutes, spoken };
+    }
+    case "players": {
+      const row = playersRow(game, t.details, locale);
+      if (!row) return none;
+      const { minPlayers: min, maxPlayers: max } = game;
+      const value = game.bestPlayers.length ? formatCounts(game.bestPlayers) : !max || max === min ? `${min}` : `${min}–${max}`;
+      return { value, label: game.bestPlayers.length ? t.game.bestCount : t.game.stats.players, spoken: row.title };
+    }
+  }
 }

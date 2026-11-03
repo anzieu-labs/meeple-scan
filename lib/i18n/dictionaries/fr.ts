@@ -155,6 +155,7 @@ export const fr: Dictionary = {
       failed: "Ton message n'a pas pu être envoyé. Réessaie.",
     },
     github: "Code source sur GitHub",
+    scanStat: "Affiché après un scan",
   },
   scanner: {
     cameraErrors: {
@@ -222,6 +223,10 @@ export const fr: Dictionary = {
     score: "Note {value} sur 10, {label}",
     fewRatings: "Peu de votes",
     tiers: { excellent: "Excellent", good: "Bon", average: "Moyen", poor: "Faible", none: "Pas assez de votes" },
+    stats: { rating: "Note", complexity: "Complexité", time: "Durée", players: "Joueurs" },
+    weights: { light: "Légère", mediumLight: "Moyenne-légère", medium: "Moyenne", mediumHeavy: "Moyenne-élevée", heavy: "Élevée" },
+    minutes: "min",
+    bestCount: "Idéal",
   },
   details: {
     rated: {
@@ -301,5 +306,23 @@ export const fr: Dictionary = {
     title: "L'app a cessé de fonctionner",
     text: "Un problème est survenu sur cette page. Ton historique est toujours enregistré.",
     retry: "Réessayer",
+  },
+  changelog: {
+    title: "Nouveautés",
+    intro: "Chaque version de Meeple Scan, de la plus récente à la plus ancienne, et ce qu'elle a changé.",
+    version: "Version {version}",
+    releases: {
+      "1.1.0": [
+        "Choisis ce qui s'affiche à côté de chaque jeu scanné\u00a0: sa note, sa complexité, sa durée ou son nombre idéal de joueurs. C'est dans les Réglages.",
+        "Cette page, pour voir ce qui change à chaque version.",
+      ],
+      "1.0.0": [
+        "Photographie une boîte de jeu, ou toute une étagère, et vois la note BoardGameGeek, la complexité et le nombre idéal de joueurs de chaque jeu.",
+        "La vision par IA et la lecture du texte reconnaissent environ 9 boîtes sur 10 du premier coup. Sinon, tu choisis le bon jeu en un geste.",
+        "Si la caméra est bloquée, choisis plutôt une photo de ta galerie.",
+        "Ton historique reste sur ton téléphone. En plus\u00a0: les jeux du moment, le top 100 et la recherche par nom.",
+        "En 10 langues, gratuit, sans compte, et installable sur ton écran d'accueil.",
+      ],
+    },
   },
 };

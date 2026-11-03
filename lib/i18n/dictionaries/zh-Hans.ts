@@ -154,6 +154,7 @@ export const zhHans: Dictionary = {
       failed: "留言发送失败，请重试。",
     },
     github: "GitHub上的源代码",
+    scanStat: "扫描后显示",
   },
   scanner: {
     cameraErrors: {
@@ -221,6 +222,10 @@ export const zhHans: Dictionary = {
     score: "评分{value}分（满分10分），{label}",
     fewRatings: "评分太少",
     tiers: { excellent: "优秀", good: "良好", average: "一般", poor: "较差", none: "评分不足" },
+    stats: { rating: "评分", complexity: "复杂度", time: "时长", players: "人数" },
+    weights: { light: "低", mediumLight: "中低", medium: "中等", mediumHeavy: "中高", heavy: "高" },
+    minutes: "分钟",
+    bestCount: "最佳人数",
   },
   details: {
     rated: {
@@ -300,5 +305,23 @@ export const zhHans: Dictionary = {
     title: "应用停止运行了",
     text: "此页面出了点问题。你的历史记录仍然保存着。",
     retry: "重试",
+  },
+  changelog: {
+    title: "更新内容",
+    intro: "Meeple Scan的每个版本及其改动，按从新到旧排列。",
+    version: "版本 {version}",
+    releases: {
+      "1.1.0": [
+        "现在可以选择每款扫描到的游戏旁显示什么：评分、复杂度、游戏时长或最佳人数。在设置中更改。",
+        "新增本页面，查看每个版本的改动。",
+      ],
+      "1.0.0": [
+        "拍一盒桌游或整个桌游柜，就能看到每款游戏的BoardGameGeek评分、复杂度和最佳人数。",
+        "AI视觉识别和文字读取一次就能认对约九成的游戏盒。认错时，点一下就能选对游戏。",
+        "如果摄像头被禁用，可以改为从相册选择照片。",
+        "历史记录只保存在你的手机上。还有热门游戏、前100名和按名称搜索。",
+        "支持10种语言，免费，无需账号，可安装到主屏幕。",
+      ],
+    },
   },
 };

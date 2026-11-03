@@ -26,14 +26,13 @@ import { GamePeek } from "@/components/game/game-peek";
 import { GameSearch } from "@/components/game/game-search";
 import { GameThumb } from "@/components/game/game-thumb";
 import { PoweredByBgg } from "@/components/game/powered-by-bgg";
-import { TIER_DOT } from "@/components/game/score-badge";
+import { StatInline } from "@/components/game/stat-badge";
 import { Button } from "@/components/ui/button";
 import { Drawer, DrawerContent, DrawerTitle } from "@/components/ui/drawer";
 import { Skeleton } from "@/components/ui/skeleton";
 import { isChecked, photoOrder, type LookupState, type PickedVia, type Shown } from "@/hooks/use-game-lookup";
-import { ratingTier } from "@/lib/game/labels";
 import { useI18n } from "@/lib/i18n/client";
-import { fill, formatRating, plural } from "@/lib/i18n/format";
+import { fill, plural } from "@/lib/i18n/format";
 import { tabBarStore } from "@/lib/tab-bar";
 
 import { DEFAULT_PEEK_PX, PEEK_EXTRA_PX } from "./sheet-layout";
@@ -439,7 +438,7 @@ function SummaryPeek({ games, pending }: { games: Shown[]; pending: boolean }) {
 
 /**
  * Every game found on a photo of several boxes, biggest title first: each one is marked right or wrong
- * from its row, or all at once. A game marked right shows its score; tapping a game shows its details.
+ * from its row, or all at once. A game marked right shows its rating (or the stat chosen in Settings); tapping a game shows its details.
  */
 function PhotoSummary({
   games,
@@ -455,7 +454,7 @@ function PhotoSummary({
   onWrong: (index: number) => void;
   onConfirm: (bggIds: number[]) => void;
 }) {
-  const { locale, t } = useI18n();
+  const { t } = useI18n();
   const unchecked = games.filter((shown) => !isChecked(shown)).map((shown) => shown.game.bggId);
   return (
     <div className="flex flex-col gap-4" data-testid="photo-summary">
@@ -463,7 +462,6 @@ function PhotoSummary({
         {games.map((shown, index) => {
           const { game } = shown;
           const checked = isChecked(shown);
-          const tier = ratingTier(game);
           return (
             <li key={game.bggId} className="flex items-center gap-2 py-2" data-testid="summary-game">
               <button
@@ -482,8 +480,7 @@ function PhotoSummary({
                 </span>
                 {checked && (
                   <span className="flex items-center gap-1.5 text-sm font-semibold tabular-nums">
-                    {tier === "none" ? "–" : formatRating(locale, game.ratingAverage!)}
-                    <span className={`size-2.5 rounded-full ${TIER_DOT[tier]}`} aria-hidden />
+                    <StatInline game={game} />
                     <ChevronRight className="size-4 text-muted-foreground" aria-hidden />
                   </span>
                 )}
