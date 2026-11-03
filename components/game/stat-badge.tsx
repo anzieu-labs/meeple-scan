@@ -18,13 +18,19 @@ export function useScanStat() {
   return useSyncExternalStore(scanStatStore.subscribe, scanStatStore.getSnapshot, scanStatStore.getServerSnapshot);
 }
 
+/** What a game needs for any of the stats: a history entry has it, as well as a full card. */
+export type StatGame = Pick<
+  GameCard,
+  "ratingAverage" | "usersRated" | "weight" | "minPlayTime" | "maxPlayTime" | "bestPlayers" | "recommendedPlayers" | "minPlayers" | "maxPlayers"
+>;
+
 const STAT_ICON: Record<Exclude<ScanStat, "rating">, LucideIcon> = { complexity: Brain, time: Clock, players: Users };
 
 /** Long figures ("30–60", "120–180") get smaller type to fit the circle. */
 const figureSize = (value: string) => (value.length <= 3 ? "text-xl" : value.length <= 4 ? "text-base" : "text-sm");
 
-/** The circle beside a scanned game: its rating, or the complexity, playing time or player count chosen in Settings. */
-export function StatBadge({ game }: { game: GameCard }) {
+/** The circle beside a game: its rating, or the complexity, playing time or player count chosen in Settings. */
+export function StatBadge({ game }: { game: StatGame }) {
   const { locale, t } = useI18n();
   const stat = useScanStat();
   if (stat === "rating") return <ScoreBadge game={game} />;
@@ -41,8 +47,8 @@ export function StatBadge({ game }: { game: GameCard }) {
   );
 }
 
-/** The same figure on one line, for a row in a list: "7.8 ●", or an icon and "2.4", "30–60 min", "3–4". */
-export function StatInline({ game }: { game: GameCard }) {
+/** The same figure on one line, for a row in a list: "7.8 ●", or an icon and "2.4", "30–60", "3–4". */
+export function StatInline({ game }: { game: StatGame }) {
   const { locale, t } = useI18n();
   const stat = useScanStat();
   if (stat === "rating") {
@@ -59,7 +65,8 @@ export function StatInline({ game }: { game: GameCard }) {
   return (
     <>
       <Icon className="size-3.5 text-muted-foreground" aria-hidden />
-      <span aria-label={spoken}>{value ?? "–"}</span>
+      <span aria-hidden>{value ?? "–"}</span>
+      <span className="sr-only">{spoken}</span>
     </>
   );
 }

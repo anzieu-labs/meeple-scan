@@ -155,7 +155,7 @@ export const de: Dictionary = {
       failed: "Deine Nachricht konnte nicht gesendet werden. Versuch es noch einmal.",
     },
     github: "Quellcode auf GitHub",
-    scanStat: "Nach dem Scannen angezeigt",
+    scanStat: "Neben jedem Spiel angezeigt",
   },
   scanner: {
     cameraErrors: {
@@ -316,7 +316,7 @@ export const de: Dictionary = {
     version: "Version {version}",
     releases: {
       "1.1.0": [
-        "Wähle, was neben jedem gescannten Spiel steht: Wertung, Komplexität, Spieldauer oder beste Spieleranzahl. Du findest es in den Einstellungen.",
+        "Wähle, was neben jedem Spiel steht, nach dem Scannen und in deinen Listen: Wertung, Komplexität, Spieldauer oder beste Spieleranzahl. Du findest es in den Einstellungen.",
         "Diese Seite, damit du siehst, was sich in jeder Version geändert hat.",
       ],
       "1.0.0": [

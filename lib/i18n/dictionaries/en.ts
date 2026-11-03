@@ -162,7 +162,7 @@ export const en = {
       failed: "Your message couldn't be sent. Try again.",
     },
     github: "Source code on GitHub",
-    scanStat: "Shown after a scan",
+    scanStat: "Shown beside each game",
   },
   scanner: {
     cameraErrors: {
@@ -321,7 +321,7 @@ export const en = {
     /** What each version changed, for people using the app (not a commit log). Newest first, matching RELEASES. */
     releases: {
       "1.1.0": [
-        "Choose what shows beside each game you scan: its rating, complexity, playing time or best player count. It's in Settings.",
+        "Choose what shows beside every game, in a scan and in your lists: its rating, complexity, playing time or best player count. It's in Settings.",
         "This page, to see what changed in each version.",
       ],
       "1.0.0": [

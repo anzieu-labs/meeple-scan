@@ -155,7 +155,7 @@ export const it: Dictionary = {
       failed: "Impossibile inviare il messaggio. Riprova.",
     },
     github: "Codice sorgente su GitHub",
-    scanStat: "Mostrato dopo la scansione",
+    scanStat: "Mostrato accanto a ogni gioco",
   },
   scanner: {
     cameraErrors: {
@@ -315,7 +315,7 @@ export const it: Dictionary = {
     version: "Versione {version}",
     releases: {
       "1.1.0": [
-        "Scegli cosa appare accanto a ogni gioco scansionato: voto, complessità, durata o numero ideale di giocatori. Lo trovi nelle Impostazioni.",
+        "Scegli cosa appare accanto a ogni gioco, dopo la scansione e nelle tue liste: voto, complessità, durata o numero ideale di giocatori. Lo trovi nelle Impostazioni.",
         "Questa pagina, per vedere cosa cambia a ogni versione.",
       ],
       "1.0.0": [

@@ -71,7 +71,7 @@ test("a photo asks if the game is right before showing it, then its Yuka-style d
   await expect(page.getByRole("textbox", { name: "Game name" })).toHaveCount(0);
 });
 
-test("the stat chosen in Settings shows beside the game instead of its rating", async ({ page }) => {
+test("the stat chosen in Settings shows beside the game instead of its rating, there and in the lists", async ({ page }) => {
   await fakeApi(page, photoOf(catan));
   await page.goto("/settings");
   await page.getByTestId("scan-stat").getByRole("radio", { name: "Complexity" }).click();
@@ -83,6 +83,12 @@ test("the stat chosen in Settings shows beside the game instead of its rating", 
   await rightGame(page);
   await expect(peek(page).getByRole("img", { name: "Medium-light complexity, 2.3/5" })).toBeVisible();
   await expect(peek(page)).not.toContainText("7.1");
+
+  // And in every list: the history keeps it too.
+  await page.goto("/history");
+  const row = page.getByRole("button", { name: /^Catan/ });
+  await expect(row).toContainText("Medium-light complexity, 2.3/5");
+  await expect(row).not.toContainText("7.1");
 });
 
 test("only the framed part of the camera is sent, and the whole screen shows it being read", async ({ page }) => {

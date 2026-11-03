@@ -1,10 +1,34 @@
 import type { GameCard } from "@/lib/game/types";
 
-/** What the history list needs to draw a row without asking the server. */
+/** What the history list needs to draw a row without asking the server, whichever stat Settings shows. */
 export type HistoryEntry = Pick<
   GameCard,
-  "bggId" | "name" | "thumbnail" | "yearPublished" | "type" | "ratingAverage" | "usersRated"
+  | "bggId"
+  | "name"
+  | "thumbnail"
+  | "yearPublished"
+  | "type"
+  | "ratingAverage"
+  | "usersRated"
+  | "weight"
+  | "minPlayTime"
+  | "maxPlayTime"
+  | "bestPlayers"
+  | "recommendedPlayers"
+  | "minPlayers"
+  | "maxPlayers"
 > & { scannedAt: number };
+
+/** Entries saved before the history kept every stat: those show "–" until the game is seen again. */
+const UNKNOWN_STATS = {
+  weight: null,
+  minPlayTime: null,
+  maxPlayTime: null,
+  bestPlayers: [],
+  recommendedPlayers: [],
+  minPlayers: null,
+  maxPlayers: null,
+} satisfies Partial<HistoryEntry>;
 
 const KEY = "meeple-scan:history";
 /** Where the history was kept before the app was called Meeple Scan: read once, then moved to KEY. */
@@ -26,7 +50,7 @@ function read(): HistoryEntry[] {
   if (cache) return cache;
   try {
     const parsed = JSON.parse(localStorage.getItem(KEY) ?? localStorage.getItem(OLD_KEY) ?? "[]");
-    cache = Array.isArray(parsed) ? dedupe(parsed) : [];
+    cache = Array.isArray(parsed) ? dedupe(parsed).map((entry) => ({ ...UNKNOWN_STATS, ...entry })) : [];
   } catch {
     cache = [];
   }
@@ -47,7 +71,24 @@ function write(entries: HistoryEntry[]) {
 /** Newest first; one row per game (seeing it again moves it to the top), capped at 50. */
 export function addToHistory(game: GameCard, scannedAt = Date.now()) {
   const { bggId, name, thumbnail, yearPublished, type, ratingAverage, usersRated } = game;
-  const entry: HistoryEntry = { bggId, name, thumbnail, yearPublished, type, ratingAverage, usersRated, scannedAt };
+  const { weight, minPlayTime, maxPlayTime, bestPlayers, recommendedPlayers, minPlayers, maxPlayers } = game;
+  const entry: HistoryEntry = {
+    bggId,
+    name,
+    thumbnail,
+    yearPublished,
+    type,
+    ratingAverage,
+    usersRated,
+    weight,
+    minPlayTime,
+    maxPlayTime,
+    bestPlayers,
+    recommendedPlayers,
+    minPlayers,
+    maxPlayers,
+    scannedAt,
+  };
   write([entry, ...read().filter((e) => e.bggId !== bggId)].slice(0, HISTORY_LIMIT));
 }
 

@@ -1,4 +1,4 @@
-/** What the scan screen shows next to each game it finds, chosen in Settings. */
+/** What shows beside each game, after a scan and in every list, chosen in Settings. */
 export const SCAN_STATS = ["rating", "complexity", "time", "players"] as const;
 export type ScanStat = (typeof SCAN_STATS)[number];
 

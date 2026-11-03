@@ -155,7 +155,7 @@ export const es: Dictionary = {
       failed: "No se ha podido enviar tu mensaje. Inténtalo de nuevo.",
     },
     github: "Código fuente en GitHub",
-    scanStat: "Se muestra al escanear",
+    scanStat: "Se muestra junto a cada juego",
   },
   scanner: {
     cameraErrors: {
@@ -315,7 +315,7 @@ export const es: Dictionary = {
     version: "Versión {version}",
     releases: {
       "1.1.0": [
-        "Elige qué se muestra junto a cada juego que escaneas: su nota, complejidad, duración o mejor número de jugadores. Está en Ajustes.",
+        "Elige qué se muestra junto a cada juego, al escanear y en tus listas: su nota, complejidad, duración o mejor número de jugadores. Está en Ajustes.",
         "Esta página, para ver qué cambió en cada versión.",
       ],
       "1.0.0": [

@@ -2,17 +2,15 @@
 
 import type { ReactNode } from "react";
 
-import { ratingTier } from "@/lib/game/labels";
 import { useI18n } from "@/lib/i18n/client";
-import { formatRating } from "@/lib/i18n/format";
 import type { GameCard } from "@/lib/game/types";
 
 import { GameThumb } from "./game-thumb";
-import { TIER_DOT } from "./score-badge";
+import { StatInline, type StatGame } from "./stat-badge";
 
-type RowGame = Pick<GameCard, "bggId" | "name" | "thumbnail" | "yearPublished" | "type" | "ratingAverage" | "usersRated">;
+type RowGame = Pick<GameCard, "bggId" | "name" | "thumbnail" | "yearPublished" | "type"> & StatGame;
 
-/** A tappable game in a list (history, rankings, search): art, name, a line under it, and the score. */
+/** A tappable game in a list (history, rankings, search): art, name, a line under it, and the stat chosen in Settings. */
 export function GameRow({
   game,
   detail,
@@ -29,8 +27,7 @@ export function GameRow({
   priority?: boolean;
   onSelect: () => void;
 }) {
-  const { locale, t } = useI18n();
-  const tier = ratingTier(game);
+  const { t } = useI18n();
   return (
     <button
       type="button"
@@ -46,8 +43,7 @@ export function GameRow({
         </span>
       </span>
       <span className="flex items-center gap-1.5 text-sm font-semibold tabular-nums">
-        {tier === "none" ? "–" : formatRating(locale, game.ratingAverage!)}
-        <span className={`size-2.5 rounded-full ${TIER_DOT[tier]}`} aria-hidden />
+        <StatInline game={game} />
       </span>
     </button>
   );

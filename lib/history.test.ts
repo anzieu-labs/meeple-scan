@@ -58,6 +58,15 @@ describe("history", () => {
     expect(listener).toHaveBeenCalledTimes(4);
   });
 
+  it("keeps every stat Settings can show, and reads older entries without them", async () => {
+    const storage = memoryStorage();
+    storage.data.set("meeple-scan:history", JSON.stringify([{ bggId: 13, name: "Catan", ratingAverage: 7, usersRated: 100, scannedAt: 1 }]));
+    const h = await load(storage);
+    expect(h.historyStore.getSnapshot()[0]).toMatchObject({ weight: null, bestPlayers: [], minPlayTime: null });
+    h.addToHistory({ ...game(230802, "Azul"), weight: 1.8, minPlayTime: 30, maxPlayTime: 45, bestPlayers: [2], minPlayers: 2, maxPlayers: 4 });
+    expect(h.historyStore.getSnapshot()[0]).toMatchObject({ weight: 1.8, minPlayTime: 30, maxPlayTime: 45, bestPlayers: [2], maxPlayers: 4 });
+  });
+
   it("keeps the history saved under the app's old name, and moves it to the new one", async () => {
     const storage = memoryStorage();
     storage.data.set("bgg-scan:history", JSON.stringify([{ bggId: 13, name: "Catan", scannedAt: 1 }]));

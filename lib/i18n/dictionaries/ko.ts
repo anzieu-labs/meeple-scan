@@ -155,7 +155,7 @@ export const ko: Dictionary = {
       failed: "메시지를 보내지 못했어요. 다시 시도해 주세요.",
     },
     github: "GitHub 소스 코드",
-    scanStat: "스캔 후 표시",
+    scanStat: "게임 옆에 표시",
   },
   scanner: {
     cameraErrors: {
@@ -313,7 +313,7 @@ export const ko: Dictionary = {
     version: "버전 {version}",
     releases: {
       "1.1.0": [
-        "스캔한 게임 옆에 보여줄 항목을 평점, 난이도, 플레이 시간, 베스트 인원 중에서 고를 수 있어요. 설정에서 바꿀 수 있어요.",
+        "스캔 결과와 목록에서 게임 옆에 보여줄 항목을 평점, 난이도, 플레이 시간, 베스트 인원 중에서 고를 수 있어요. 설정에서 바꿀 수 있어요.",
         "버전마다 바뀐 점을 볼 수 있는 이 페이지가 생겼어요.",
       ],
       "1.0.0": [

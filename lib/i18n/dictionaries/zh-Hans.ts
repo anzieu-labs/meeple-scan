@@ -154,7 +154,7 @@ export const zhHans: Dictionary = {
       failed: "留言发送失败，请重试。",
     },
     github: "GitHub上的源代码",
-    scanStat: "扫描后显示",
+    scanStat: "每款游戏旁显示",
   },
   scanner: {
     cameraErrors: {
@@ -312,7 +312,7 @@ export const zhHans: Dictionary = {
     version: "版本 {version}",
     releases: {
       "1.1.0": [
-        "现在可以选择每款扫描到的游戏旁显示什么：评分、复杂度、游戏时长或最佳人数。在设置中更改。",
+        "现在可以选择扫描结果和列表中每款游戏旁显示什么：评分、复杂度、游戏时长或最佳人数。在设置中更改。",
         "新增本页面，查看每个版本的改动。",
       ],
       "1.0.0": [
