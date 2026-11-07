@@ -57,10 +57,3 @@ test("removes one game or clears everything", async ({ page }) => {
   await expect(page.getByText("Games you photograph appear here.")).toBeVisible();
   await expect(page.getByRole("link", { name: "Powered by BGG" }).first()).toHaveAttribute("href", "https://boardgamegeek.com");
 });
-
-test("asks to turn the phone upright in landscape", async ({ page }) => {
-  await page.setViewportSize({ width: 844, height: 390 });
-  await expect(page.getByText("Turn your phone upright")).toBeVisible();
-  await page.setViewportSize({ width: 390, height: 844 });
-  await expect(page.getByText("Turn your phone upright")).toBeHidden();
-});

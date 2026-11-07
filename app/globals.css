@@ -3,7 +3,7 @@
 @import "shadcn/tailwind.css";
 
 @custom-variant dark (&:is(.dark *));
-/* A phone turned sideways (iOS ignores the manifest's portrait lock). */
+/* A phone turned sideways: the camera puts its shutter on the side, and the tab bar steps aside. */
 @custom-variant landscape-phone (@media (orientation: landscape) and (max-height: 500px));
 
 @theme inline {

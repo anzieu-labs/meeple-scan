@@ -1,8 +1,8 @@
 "use client";
 
-import { Camera, Flashlight, FlashlightOff, ImageUp, Loader2, RotateCcw } from "lucide-react";
+import { Camera, Flashlight, FlashlightOff, ImageUp, Loader2 } from "lucide-react";
 import dynamic from "next/dynamic";
-import { useCallback, useEffect, useRef, useState, type ChangeEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type ChangeEvent, type CSSProperties } from "react";
 
 import { Button } from "@/components/ui/button";
 import { useCamera } from "@/hooks/use-camera";
@@ -22,9 +22,6 @@ const loadGameSheet = () => import("./game-sheet").then((m) => m.GameSheet);
 const GameSheet = dynamic(loadGameSheet, { ssr: false });
 
 const CAMERA_BUTTON = "size-11 rounded-full bg-black/50 text-white hover:bg-black/70";
-
-/** Space kept clear between the frame and the sheet, for the shutter (4.5rem) and its margins. */
-const SHUTTER_SPACE = "6.5rem";
 
 /**
  * Full-screen camera with a shutter: what's inside the frame is read on the OCR server and the games
@@ -98,12 +95,13 @@ export function Scanner() {
   const zoomedIn = camera.zoom.value > camera.zoom.min;
   // Camera controls sit above the sheet's peek; before the first photo there's no sheet, so above the tab bar.
   const sheetTop = state ? PEEK : "var(--tab-bar, 88px)";
+  const layout = { "--sheet-top": sheetTop } as CSSProperties;
 
   return (
     <>
       {/* Pinned to the four edges, no height: an iPhone home-screen app can measure 100dvh without its status
           bar, which left a blank strip at the bottom. */}
-      <div className="fixed inset-0 overflow-hidden bg-black text-white">
+      <div className="fixed inset-0 overflow-hidden bg-black text-white" style={layout}>
         <div className="absolute inset-0 touch-none overflow-hidden">
           <video
             ref={videoRef}
@@ -114,13 +112,14 @@ export function Scanner() {
             aria-hidden
           />
 
-          {/* Only what's inside the frame is sent: the sheet hides the bottom of the picture. */}
+          {/* Only what's inside the frame is sent: the sheet hides the bottom of the picture. Upright, the
+              shutter (4.5rem) and its margins sit under the frame; sideways, in a column on the right, so the
+              frame takes the whole height for a full shelf. */}
           {live && (
             <div
               ref={frameRef}
               data-testid="photo-frame"
-              className="pointer-events-none absolute inset-x-5 top-[max(4.5rem,calc(env(safe-area-inset-top)+4rem))] rounded-2xl border-2 border-white/90 shadow-[0_0_0_100vmax_rgb(0_0_0/0.45)]"
-              style={{ bottom: `calc(${sheetTop} + ${SHUTTER_SPACE})` }}
+              className="pointer-events-none absolute inset-x-5 top-[max(4.5rem,calc(env(safe-area-inset-top)+4rem))] bottom-[calc(var(--sheet-top)+6.5rem)] rounded-2xl border-2 border-white/90 shadow-[0_0_0_100vmax_rgb(0_0_0/0.45)] landscape-phone:top-[max(0.75rem,env(safe-area-inset-top))] landscape-phone:right-[calc(6.5rem+env(safe-area-inset-right))] landscape-phone:bottom-[calc(var(--sheet-top)+0.75rem)] landscape-phone:left-[max(1.25rem,env(safe-area-inset-left))]"
             >
               <p className="absolute inset-x-0 top-3 text-center text-sm font-medium text-white drop-shadow">
                 {t.scanner.frameHint}
@@ -160,7 +159,7 @@ export function Scanner() {
           )}
 
           {live && (
-            <div className="absolute inset-x-0 flex justify-center" style={{ bottom: `calc(${sheetTop} + 1rem)` }}>
+            <div className="absolute inset-x-0 bottom-[calc(var(--sheet-top)+1rem)] flex justify-center landscape-phone:left-auto landscape-phone:right-[calc(1rem+env(safe-area-inset-right))]">
               <button
                 type="button"
                 onClick={takePhoto}
@@ -173,7 +172,7 @@ export function Scanner() {
           )}
 
           {/* After the start overlay so the camera controls stay on top of it. */}
-          <div className="absolute inset-x-0 top-0 flex justify-end gap-2 p-3 pt-[max(0.75rem,env(safe-area-inset-top))]">
+          <div className="absolute inset-x-0 top-0 flex justify-end gap-2 p-3 pt-[max(0.75rem,env(safe-area-inset-top))] landscape-phone:left-auto landscape-phone:flex-col landscape-phone:pr-[calc(1.875rem+env(safe-area-inset-right))]">
             {camera.zoom.supported && zoomTarget > camera.zoom.min && (
               <Button
                 variant="secondary"
@@ -235,14 +234,6 @@ export function Scanner() {
           </div>
         </div>
       )}
-
-      <div
-        className="fixed inset-0 z-[60] hidden flex-col items-center justify-center gap-3 bg-black text-center text-white landscape-phone:flex"
-        role="status"
-      >
-        <RotateCcw className="size-10 text-white/70" aria-hidden />
-        <p className="text-base font-medium">{t.scanner.upright}</p>
-      </div>
     </>
   );
 }

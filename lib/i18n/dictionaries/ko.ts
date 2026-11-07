@@ -175,7 +175,6 @@ export const ko: Dictionary = {
     torchOff: "플래시 끄기",
     reading: "박스를 읽는 중…",
     readingHint: "몇 초 정도 걸려요",
-    upright: "폰을 세로로 들어 주세요",
     fromGallery: "갤러리에서 사진 선택",
   },
   sheet: {
@@ -312,6 +311,7 @@ export const ko: Dictionary = {
     intro: "Meeple Scan의 모든 버전과 바뀐 점을 최신순으로 정리했어요.",
     version: "버전 {version}",
     releases: {
+      "1.1.1": ["폰을 가로로 돌리면 선반 전체를 사진 한 장에 담을 수 있어요."],
       "1.1.0": [
         "스캔 결과와 목록에서 게임 옆에 보여줄 항목을 평점, 난이도, 플레이 시간, 베스트 인원 중에서 고를 수 있어요. 설정에서 바꿀 수 있어요.",
         "버전마다 바뀐 점을 볼 수 있는 이 페이지가 생겼어요.",

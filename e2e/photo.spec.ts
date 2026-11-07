@@ -127,6 +127,25 @@ test("only the framed part of the camera is sent, and the whole screen shows it 
   expect(width / height).toBeCloseTo(frame!.width / frame!.height, 1);
 });
 
+test("sideways, the frame takes the whole height for a shelf, with the shutter beside it", async ({ page }) => {
+  const uploads = await fakeApi(page, photoOf(catan));
+  await page.setViewportSize({ width: 844, height: 390 });
+  await openCamera(page);
+  const frame = (await page.getByTestId("photo-frame").boundingBox())!;
+  const shutter = (await page.getByRole("button", { name: "Photo of the box" }).boundingBox())!;
+  expect(frame.height).toBeGreaterThan(390 * 0.75);
+  expect(frame.width).toBeGreaterThan(frame.height);
+  expect(shutter.x).toBeGreaterThanOrEqual(frame.x + frame.width);
+
+  await takePhoto(page);
+  await expect(peek(page).getByRole("heading", { name: "Catan" })).toBeVisible();
+  const [width, height] = await page.evaluate(async (base64) => {
+    const bitmap = await createImageBitmap(await (await fetch(`data:image/jpeg;base64,${base64}`)).blob());
+    return [bitmap.width, bitmap.height];
+  }, uploads[0].body!.toString("base64"));
+  expect(width / height).toBeCloseTo(frame.width / frame.height, 1);
+});
+
 test("a best guess can be corrected with 'Wrong game', and the pick is sent to the photo log", async ({ page }) => {
   await fakeApi(page, photoOf({ game: viticulture, match: "guess", alternatives: [tuscany] }));
   const feedback = await recordPhotoFeedback(page);

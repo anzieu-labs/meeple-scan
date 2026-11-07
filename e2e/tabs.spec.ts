@@ -123,8 +123,8 @@ test.describe("on a computer", () => {
     await page.getByRole("link", { name: "Nouveautés" }).click();
     await expect(page).toHaveURL(/\/fr\/changelog$/);
     await expect(page.getByRole("heading", { level: 1 })).toHaveText("Nouveautés");
-    await expect(page.getByTestId("release").first()).toContainText("Version 1.1.0");
-    await expect(page.getByTestId("release").first()).toContainText("3 novembre 2026");
+    await expect(page.getByTestId("release").first()).toContainText("Version 1.1.1");
+    await expect(page.getByTestId("release").first()).toContainText("6 novembre 2026");
     await expect(page.getByTestId("tab-bar")).toBeHidden();
   });
 });

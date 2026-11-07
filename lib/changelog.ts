@@ -4,6 +4,7 @@
  * the newest one is package.json's version (checked by a test).
  */
 export const RELEASES = [
+  { version: "1.1.1", date: "2026-11-06" },
   { version: "1.1.0", date: "2026-11-03" },
   { version: "1.0.0", date: "2026-11-02" },
 ] as const;

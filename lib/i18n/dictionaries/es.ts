@@ -175,7 +175,6 @@ export const es: Dictionary = {
     torchOff: "Apagar la linterna",
     reading: "Leyendo la caja…",
     readingHint: "Tarda unos segundos",
-    upright: "Pon el teléfono en vertical",
     fromGallery: "Elegir una foto de la galería",
   },
   sheet: {
@@ -314,6 +313,7 @@ export const es: Dictionary = {
     intro: "Cada versión de Meeple Scan, de la más reciente a la más antigua, y lo que cambió.",
     version: "Versión {version}",
     releases: {
+      "1.1.1": ["Gira el teléfono en horizontal para que quepa una estantería entera en una foto."],
       "1.1.0": [
         "Elige qué se muestra junto a cada juego, al escanear y en tus listas: su nota, complejidad, duración o mejor número de jugadores. Está en Ajustes.",
         "Esta página, para ver qué cambió en cada versión.",

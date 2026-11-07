@@ -175,7 +175,6 @@ export const fr: Dictionary = {
     torchOff: "Éteindre la lampe",
     reading: "Lecture de la boîte…",
     readingHint: "Quelques secondes",
-    upright: "Tiens le téléphone à la verticale",
     fromGallery: "Choisir une photo dans la galerie",
   },
   sheet: {
@@ -312,6 +311,7 @@ export const fr: Dictionary = {
     intro: "Chaque version de Meeple Scan, de la plus récente à la plus ancienne, et ce qu'elle a changé.",
     version: "Version {version}",
     releases: {
+      "1.1.1": ["Tourne ton téléphone à l'horizontale pour faire tenir toute une étagère en une photo."],
       "1.1.0": [
         "Choisis ce qui s'affiche à côté de chaque jeu, après un scan comme dans tes listes\u00a0: sa note, sa complexité, sa durée ou son nombre idéal de joueurs. C'est dans les Réglages.",
         "Cette page, pour voir ce qui change à chaque version.",

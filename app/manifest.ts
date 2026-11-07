@@ -12,7 +12,7 @@ export default function manifest(): MetadataRoute.Manifest {
     categories: ["games", "entertainment", "utilities"],
     start_url: "/",
     display: "standalone",
-    orientation: "portrait",
+    orientation: "any",
     // The splash screen while the app opens: the icon's yellow.
     background_color: ICON_COLORS.background,
     theme_color: "#000000",

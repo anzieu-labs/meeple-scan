@@ -182,7 +182,6 @@ export const en = {
     torchOff: "Turn torch off",
     reading: "Reading the box…",
     readingHint: "This takes a few seconds",
-    upright: "Turn your phone upright",
     fromGallery: "Choose a photo from your gallery",
   },
   sheet: {
@@ -320,6 +319,7 @@ export const en = {
     version: "Version {version}",
     /** What each version changed, for people using the app (not a commit log). Newest first, matching RELEASES. */
     releases: {
+      "1.1.1": ["Turn your phone sideways to fit a whole shelf in one photo."],
       "1.1.0": [
         "Choose what shows beside every game, in a scan and in your lists: its rating, complexity, playing time or best player count. It's in Settings.",
         "This page, to see what changed in each version.",

@@ -174,7 +174,6 @@ export const zhHans: Dictionary = {
     torchOff: "关闭手电筒",
     reading: "正在识别盒子…",
     readingHint: "需要几秒钟",
-    upright: "请竖起手机",
     fromGallery: "从相册选择照片",
   },
   sheet: {
@@ -311,6 +310,7 @@ export const zhHans: Dictionary = {
     intro: "Meeple Scan的每个版本及其改动，按从新到旧排列。",
     version: "版本 {version}",
     releases: {
+      "1.1.1": ["把手机横过来，一张照片就能拍下整个书架。"],
       "1.1.0": [
         "现在可以选择扫描结果和列表中每款游戏旁显示什么：评分、复杂度、游戏时长或最佳人数。在设置中更改。",
         "新增本页面，查看每个版本的改动。",
