@@ -52,7 +52,7 @@ export const pl: Dictionary = {
     qrTitle: "Otwórz na telefonie",
     qrHint: "Skieruj aparat telefonu na ten kod.",
     features: [
-      { title: "OCR + AI do obrazu", text: "Około 90% pudełek rozpoznanych, nawet cała półka" },
+      { title: "AI do obrazu", text: "Około 90% pudełek rozpoznanych, nawet cała półka" },
       { title: "Całkowicie za darmo", text: "Bez reklam i płatnych planów" },
       { title: "Bez konta", text: "Nic nie trzeba zakładać: otwórz i skanuj" },
       { title: "Do zainstalowania", text: "Dodaj do ekranu głównego, bez sklepu z aplikacjami" },
@@ -73,7 +73,7 @@ export const pl: Dictionary = {
       },
       {
         q: "Jak dokładnie to działa?",
-        a: "OCR odczytuje tekst z pudełka, a model AI do obrazu rozpoznaje grę: około 90% pudełek za pierwszym razem. Jeśli nie, wybierasz właściwą grę jednym dotknięciem.",
+        a: "Model AI do obrazu odczytuje pudełko i rozpoznaje grę: około 90% pudełek za pierwszym razem. Jeśli nie, wybierasz właściwą grę jednym dotknięciem.",
       },
       {
         q: "Czy to jest darmowe?",
@@ -110,11 +110,11 @@ export const pl: Dictionary = {
     sections: [
       {
         title: "Twoje zdjęcia",
-        text: "Zdjęcie jest wysyłane tylko po to, by je odczytać, a potem zapominane: nigdy nie jest przechowywane. Trafia na nasz serwer odczytujący tekst (OCR) i do API Gemini od Google, które rozpoznają na nim gry. Korzystamy z płatnego planu Gemini: Google nie używa zdjęć do ulepszania swoich produktów.",
+        text: "Zdjęcie jest wysyłane tylko po to, by je odczytać, a potem zapominane: nigdy nie jest przechowywane. Trafia do API Gemini od Google, które rozpoznaje na nim gry. Korzystamy z płatnego planu Gemini: Google nie używa zdjęć do ulepszania swoich produktów.",
       },
       {
         title: "Co zostaje po zdjęciu",
-        text: "Aby poprawić rozpoznawanie, zachowujemy tekst odczytany z pudełka, znalezione gry i informację, czy według Ciebie były trafne. Nic o Tobie ani o Twoim telefonie. Przechowywane przez {photoMonths} miesięcy.",
+        text: "Aby poprawić rozpoznawanie, zachowujemy nazwy gier odczytane z pudełka, znalezione gry i informację, czy według Ciebie były trafne. Nic o Tobie ani o Twoim telefonie. Przechowywane przez {photoMonths} miesięcy.",
       },
       {
         title: "Statystyki użycia",
@@ -329,6 +329,7 @@ export const pl: Dictionary = {
     intro: "Każda wersja Meeple Scan, od najnowszej, i co w niej się zmieniło.",
     version: "Wersja {version}",
     releases: {
+      "1.1.2": ["Zdjęcia odczytuje teraz tylko Gemini od Google: nie trafiają już dodatkowo na nasz własny serwer odczytujący tekst."],
       "1.1.1": ["Obróć telefon poziomo, żeby zmieścić całą półkę na jednym zdjęciu."],
       "1.1.0": [
         "Wybierz, co widać przy każdej grze, po skanowaniu i na listach: ocenę, złożoność, czas gry albo najlepszą liczbę graczy. Znajdziesz to w Ustawieniach.",

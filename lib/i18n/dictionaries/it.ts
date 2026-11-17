@@ -52,7 +52,7 @@ export const it: Dictionary = {
     qrTitle: "Aprilo sul telefono",
     qrHint: "Inquadra questo codice con la fotocamera del telefono.",
     features: [
-      { title: "OCR + IA visiva", text: "Circa il 90% delle scatole riconosciute, anche un'intera libreria" },
+      { title: "IA visiva", text: "Circa il 90% delle scatole riconosciute, anche un'intera libreria" },
       { title: "Totalmente gratis", text: "Niente pubblicità, niente abbonamenti" },
       { title: "Nessun account", text: "Niente da registrare: apri e scansiona" },
       { title: "Installabile", text: "Aggiungila alla schermata Home, senza app store" },
@@ -73,7 +73,7 @@ export const it: Dictionary = {
       },
       {
         q: "Quanto è affidabile?",
-        a: "L'OCR legge il testo sulla scatola e un'IA visiva riconosce il gioco: circa il 90% delle scatole al primo colpo. Altrimenti scegli il gioco giusto con un tocco.",
+        a: "Un'IA visiva legge la scatola e riconosce il gioco: circa il 90% delle scatole al primo colpo. Altrimenti scegli il gioco giusto con un tocco.",
       },
       {
         q: "È gratis?",
@@ -110,11 +110,11 @@ export const it: Dictionary = {
     sections: [
       {
         title: "Le tue foto",
-        text: "Una foto viene inviata solo per essere letta, poi dimenticata: non viene mai conservata. Passa dal nostro server di lettura del testo (OCR) e dall'API Gemini di Google, che riconoscono i giochi presenti. Usiamo il piano a pagamento di Gemini: Google non usa le foto per migliorare i suoi prodotti.",
+        text: "Una foto viene inviata solo per essere letta, poi dimenticata: non viene mai conservata. Passa dall'API Gemini di Google, che riconosce i giochi presenti. Usiamo il piano a pagamento di Gemini: Google non usa le foto per migliorare i suoi prodotti.",
       },
       {
         title: "Cosa resta di una foto",
-        text: "Per migliorare il riconoscimento, conserviamo il testo letto sulla scatola, i giochi trovati e se hai detto che erano giusti. Niente su di te o sul tuo telefono. Conservazione: {photoMonths} mesi.",
+        text: "Per migliorare il riconoscimento, conserviamo i nomi dei giochi letti sulla scatola, i giochi trovati e se hai detto che erano giusti. Niente su di te o sul tuo telefono. Conservazione: {photoMonths} mesi.",
       },
       {
         title: "Statistiche di utilizzo",
@@ -313,6 +313,7 @@ export const it: Dictionary = {
     intro: "Ogni versione di Meeple Scan, dalla più recente, e cosa ha cambiato.",
     version: "Versione {version}",
     releases: {
+      "1.1.2": ["Ora le foto vengono lette solo da Gemini di Google: non passano più anche dal nostro server di lettura del testo."],
       "1.1.1": ["Gira il telefono in orizzontale per far stare un intero scaffale in una foto."],
       "1.1.0": [
         "Scegli cosa appare accanto a ogni gioco, dopo la scansione e nelle tue liste: voto, complessità, durata o numero ideale di giocatori. Lo trovi nelle Impostazioni.",

@@ -2,7 +2,7 @@ import "server-only";
 
 import type { VisionGame } from "@/lib/matching/vision-match";
 
-/** Usually ~1.5 s; past this, OCR's answer is used alone. */
+/** Usually ~1.5 s; past this, the box reader counts as unavailable. */
 const TIMEOUT_MS = 8_000;
 /** Read titles as well as the bigger models on the evaluation photos, at ~$0.0004 a photo. */
 const DEFAULT_MODEL = "gemini-3.1-flash-lite";
@@ -29,9 +29,6 @@ const SCHEMA = {
   },
   required: ["games"],
 };
-
-/** Whether a Gemini key is set; without one, photos are matched from OCR alone. */
-export const geminiEnabled = () => Boolean(process.env.GEMINI_API_KEY);
 
 /**
  * Asks Gemini which board games are on a photo, the biggest box first: each title as printed and its

@@ -4,26 +4,16 @@ import { eq, sql } from "drizzle-orm";
 
 import { db } from "@/db";
 import { photoLogs, type PhotoCorrection } from "@/db/schema";
-import type { OcrLine } from "@/lib/matching/cover";
 import type { VisionGame } from "@/lib/matching/vision-match";
 
 import type { CoverGame } from "./types";
 
-/**
- * Keeps what a photo was read as (OCR lines, the games Gemini named) and which games were shown, for tuning
- * the matcher later.
- */
-export async function logPhoto(
-  id: string,
-  { lines, vision, source }: { lines: OcrLine[]; vision: VisionGame[] | null; source: "gemini" | "ocr" },
-  games: CoverGame[],
-) {
+/** Keeps what a photo was read as (the games Gemini named) and which games were shown, for tuning the matcher later. */
+export async function logPhoto(id: string, vision: VisionGame[], games: CoverGame[]) {
   try {
     await db.insert(photoLogs).values({
       id,
-      lines: lines.map(({ text, score, box }) => ({ text, score, box })),
       vision,
-      source,
       shown: games.map((g) => ({ bggId: g.game.bggId, match: g.match })),
     });
   } catch (error) {

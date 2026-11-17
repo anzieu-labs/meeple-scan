@@ -4,8 +4,8 @@ import { defineConfig } from "vitest/config";
 
 export default defineConfig({
   test: {
-    // The OCR evaluation calls BGG and needs run_ocr.py output, so it only runs on demand (OCR_EVAL=1).
-    include: process.env.OCR_EVAL ? ["ocr-eval/**/*.test.ts"] : ["lib/**/*.test.ts"],
+    // The recognition evaluation calls BGG and needs Gemini answers, so it only runs on demand (RECOGNITION_EVAL=1).
+    include: process.env.RECOGNITION_EVAL ? ["recognition-eval/**/*.test.ts"] : ["lib/**/*.test.ts"],
   },
   resolve: {
     tsconfigPaths: true,

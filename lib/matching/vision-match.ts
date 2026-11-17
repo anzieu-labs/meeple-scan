@@ -1,4 +1,3 @@
-import { MIN_EXTRA_NAME_SCORE, type CoverMatch, type OnMatch } from "./cover-match";
 import { matchQueries, type BggSource, type MatchResult } from "./match";
 import { normalizeName } from "./rank";
 
@@ -9,17 +8,38 @@ export interface VisionGame {
 }
 
 /**
- * The games a vision model named on a photo, matched like OCR titles: BGG name first, then the title as
- * printed (a box in Polish is still Wingspan). Null when the first game matches nothing, so the caller
- * falls back to OCR. Every game named is looked up, one at a time (BGG answers 429 to bursts); extras need
- * the same name score as OCR extras and never repeat a game.
+ * Another game on the photo only counts when its name matches this well; below that it's usually a near
+ * name that happens to be a game. Same bar as an automatic match.
+ */
+const MIN_EXTRA_NAME_SCORE = 0.85;
+
+/**
+ * Called with each game of a photo as soon as it's matched, the main one first: the phone shows them one by
+ * one. `more`: other games on the photo are still to be looked up.
+ */
+export type OnMatch = (match: MatchResult, more: boolean) => void | Promise<void>;
+
+export interface PhotoMatch {
+  /** The biggest or most central box. */
+  main: MatchResult;
+  /** Other games found on the same photo, never repeating a game. */
+  extras: MatchResult[];
+  /** The main title as printed, for "Read on the box: …". */
+  text: string[];
+}
+
+/**
+ * The games a vision model named on a photo, matched by BGG name first, then by the title as printed (a box
+ * in Polish is still Wingspan). Null when the first game matches nothing. Every game named is looked up, one
+ * at a time (BGG answers 429 to bursts); extras are a bonus: if BGG refuses one, the games already found are
+ * kept, and they never repeat a game.
  */
 export async function matchVisionGames(
   games: VisionGame[],
   bgg: BggSource,
   onMatch?: OnMatch,
-): Promise<CoverMatch | null> {
-  // Not cleanTitle: that drops words like "card game" or "edition" from OCR lines, which are part of these names.
+): Promise<PhotoMatch | null> {
+  // Not cleanTitle: that drops words like "card game" or "edition", which are part of these names.
   const queriesOf = (g: VisionGame) => [...new Set([g.bgg, g.printed].map(normalizeName).filter(Boolean))];
   const titles = games.map((g) => `${g.printed} ${g.bgg}`);
   const one = (queries: string[]) => matchQueries({ queries, phrases: queries.map((phrase) => ({ phrase, score: 1 })), titles }, bgg);

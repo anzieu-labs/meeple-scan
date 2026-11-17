@@ -31,5 +31,5 @@
     ".next/dev/types/**/*.ts",
     "**/*.mts"
   ],
-  "exclude": ["node_modules", "ocr-eval/.venv", "ocr-eval/data", "ocr-eval/out"]
+  "exclude": ["node_modules", "recognition-eval/.venv", "recognition-eval/data", "recognition-eval/out"]
 }

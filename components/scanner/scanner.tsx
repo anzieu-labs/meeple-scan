@@ -24,7 +24,7 @@ const GameSheet = dynamic(loadGameSheet, { ssr: false });
 const CAMERA_BUTTON = "size-11 rounded-full bg-black/50 text-white hover:bg-black/70";
 
 /**
- * Full-screen camera with a shutter: what's inside the frame is read on the OCR server and the games
+ * Full-screen camera with a shutter: what's inside the frame is read by Gemini on the server and the games
  * appear in the Yuka-style sheet below. While a photo is read, it covers the whole screen.
  */
 export function Scanner() {

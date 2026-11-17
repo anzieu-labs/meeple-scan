@@ -20,7 +20,7 @@ export function normalizeName(name: string) {
 const tokens = (s: string) => s.split(" ").filter(Boolean);
 
 /**
- * Small linking words inside titles that boxes print tiny (or OCR drops): "KING TOKYO" is King of Tokyo.
+ * Small linking words inside titles that boxes print tiny (and readers drop): "KING TOKYO" is King of Tokyo.
  * Articles still count: "GRANDE" (the Rio Grande logo) isn't El Grande, "MARS" isn't The Mars.
  */
 const LINKING_WORDS = new Set(["of", "de", "du", "des", "der"]);
@@ -57,7 +57,7 @@ function wholeNameSimilarity(query: string, name: string) {
   const n = withoutLinkingWords(normalizeName(name));
   if (!q || !n) return 0;
   if (q === n) return 1;
-  // OCR often drops the space between big letters: "FORSALE" is For Sale. Just below an exact match, so
+  // Boxes often print big letters without a space: "FORSALE" is For Sale. Just below an exact match, so
   // "city line" is City Line before Cityline.
   if (squashed(q) === squashed(n)) return 0.97;
   const qTokens = new Set(tokens(q));
@@ -157,7 +157,7 @@ const GENERIC_WORDS = new Set("the a an game board edition first second third 2n
 /**
  * "VITICULTURE ESSENTIAL" is Viticulture Essential Edition, not Viticulture: a game whose name is another
  * candidate's name plus words also read in the title lines outranks it, though that candidate matches one
- * line exactly. Words are matched with spaces removed, since OCR merges them ("ENDEAVOR DEEPSEA"). Only
+ * line exactly. Words are matched with spaces removed, since titles run them together ("ENDEAVOR DEEPSEA"). Only
  * the longer game's own name counts: an alternate name like "Mexican Train Dominoes" for Dominoes would
  * outrank Mexican Train.
  */

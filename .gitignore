@@ -47,10 +47,12 @@ next-env.d.ts
 /test-results
 /playwright-report
 
-# OCR evaluation: Python env, test images, OCR output
-/ocr-eval/.venv
-/ocr-eval/data
-/ocr-eval/out
+# Recognition evaluation: Python env, test images, Gemini answers and reports
+/recognition-eval/.venv
+/recognition-eval/data
+/recognition-eval/out
+# Old OCR evaluation results, kept locally only
+/ocr-eval/
 
 # BGG data dumps (download from boardgamegeek.com/data_dumps/bg_ranks)
 /data/bgg-ranks

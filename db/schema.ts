@@ -3,7 +3,6 @@ import { boolean, index, integer, jsonb, pgEnum, pgTable, primaryKey, real, text
 
 import type { PlayerVotes } from "@/lib/bgg/parse";
 import type { EventName, EventProps } from "@/lib/events/names";
-import type { OcrLine } from "@/lib/matching/cover";
 import type { VisionGame } from "@/lib/matching/vision-match";
 
 const updatedAt = () =>
@@ -68,7 +67,7 @@ export const gameNames = pgTable(
   (t) => [
     primaryKey({ columns: [t.bggId, t.normalized] }),
     index("game_names_normalized_trgm").using("gin", sql`${t.normalized} gin_trgm_ops`),
-    // Names without spaces, for OCR that runs words together (lib/game/name-index.ts).
+    // Names without spaces, for titles that run words together (lib/game/name-index.ts).
     index("game_names_squashed_trgm").using("gin", sql`replace(${t.normalized}, ' ', '') gin_trgm_ops`),
     index().on(t.rank),
   ],
@@ -83,7 +82,7 @@ export interface PhotoCorrection {
 }
 
 /**
- * One row per photo read: the text OCR found (never the image), the games shown, the ones the user marked
+ * One row per photo read: the games Gemini named (never the image), the games shown, the ones the user marked
  * right, and what they picked instead or added as missed. That makes these labelled examples for tuning the
  * matcher (scripts/export-photo-logs.ts). No IP or device id is kept.
  */
@@ -92,11 +91,8 @@ export const photoLogs = pgTable(
   {
     id: uuid().primaryKey(),
     createdAt: timestamp({ withTimezone: true }).defaultNow().notNull(),
-    lines: jsonb().$type<OcrLine[]>().notNull(),
-    /** The games Gemini named on the photo; null when it wasn't asked or didn't answer. */
+    /** The games Gemini named on the photo, the biggest box first; null on rows from before it was asked. */
     vision: jsonb().$type<VisionGame[]>(),
-    /** Which reading the games shown come from: Gemini's names, or OCR when Gemini matched nothing. */
-    source: text().$type<"gemini" | "ocr">(),
     /** Main game first, then the other boxes on the photo. */
     shown: jsonb().$type<{ bggId: number; match: "auto" | "guess" }[]>().notNull(),
     /** `from: null`: a game on the photo that wasn't found (nothing found, or missed among several boxes). */

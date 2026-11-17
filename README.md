@@ -40,16 +40,14 @@
 flowchart LR
     Phone["Phone camera<br/>1280 px JPEG"] --> API["POST /api/cover<br/>(streams results)"]
     API --> Gemini["Gemini 3.1 Flash-Lite<br/>names every game on the photo"]
-    API --> OCR["PaddleOCR service<br/>reads the text (fallback)"]
     Gemini --> Match["Matching<br/>Postgres trigram name index<br/>+ exact BGG search"]
-    OCR --> Match
     Match --> Cache[("Neon Postgres<br/>BGG game cache")]
     Cache --> API
     API --> Phone
 ```
 
 1. The phone sends the framed part of the camera picture to `POST /api/cover`.
-2. **Gemini** and the **OCR service** read it at the same time. Gemini names each game it sees (title as printed and BoardGameGeek name); when it names nothing that matches, the biggest OCR titles are used instead.
+2. **Gemini** reads it and names each game it sees, the biggest box first: its title as printed and its BoardGameGeek name.
 3. Each name is matched against **our own index of the names of ~40k BGG games** (Postgres `pg_trgm`, typo-tolerant), then BGG's **exact** search for games too new to be indexed. Candidates are ranked by name similarity, popularity and the edition the box spells out.
 4. Game details come from a **shared cache** in Postgres, refreshed from BGG weekly (top 1000) and daily (hot list).
 5. Results stream back as newline-delimited JSON, so the first game shows while the others are still being looked up.
@@ -63,7 +61,7 @@ On the evaluation photos (BGG covers, real gallery photos, phone shots, shelves)
 | App | [Next.js 16](https://nextjs.org) (App Router, Cache Components, `proxy.ts`), React 19, TypeScript |
 | UI | Tailwind CSS 4, [shadcn/ui](https://ui.shadcn.com) on [Base UI](https://base-ui.com), Motion, Lucide icons |
 | Data | [Neon](https://neon.tech) Postgres, [Drizzle ORM](https://orm.drizzle.team), `pg_trgm` |
-| Recognition | [Gemini 3.1 Flash-Lite](https://ai.google.dev) and a self-hosted [PaddleOCR](https://github.com/PaddlePaddle/PaddleOCR) service ([`ocr-service/`](ocr-service)) |
+| Recognition | [Gemini 3.1 Flash-Lite](https://ai.google.dev) |
 | Game data | [BoardGameGeek XML API 2](https://boardgamegeek.com/wiki/page/BGG_XML_API2) and BGG's ranks data dump |
 | Hosting | [Vercel](https://vercel.com) (Fluid Compute, Cron Jobs) |
 | Tests | [Vitest](https://vitest.dev) (unit), [Playwright](https://playwright.dev) (end to end, with a fake camera and fake API) |
@@ -75,7 +73,7 @@ On the evaluation photos (BGG covers, real gallery photos, phone shots, shelves)
 - Node.js 24 and [pnpm](https://pnpm.io) 10
 - A Postgres database (a free [Neon](https://neon.tech) project works)
 - A [BoardGameGeek XML API token](https://boardgamegeek.com/applications)
-- Optional: a [Gemini API key](https://aistudio.google.com) and the OCR service (see [`ocr-service/README.md`](ocr-service/README.md)). Without either, photos can't be read, but search, rankings and history still work.
+- Optional: a [Gemini API key](https://aistudio.google.com). Without it, photos can't be read, but search, rankings and history still work.
 
 ### Setup
 
@@ -108,7 +106,6 @@ Open [http://localhost:3000](http://localhost:3000). The camera needs HTTPS on a
 | `DATABASE_URL`, `DATABASE_URL_UNPOOLED` | everything | Postgres connection strings (pooled and direct) |
 | `BGG_API_TOKEN` | everything | BoardGameGeek XML API token |
 | `GEMINI_API_KEY` | photos | Gemini key. Use a paid-tier key: free-tier requests may be used for training. `GEMINI_MODEL` overrides `gemini-3.1-flash-lite` |
-| `OCR_URL`, `OCR_API_KEY` | photos | Address and key of the OCR service |
 | `CRON_SECRET` | production | Protects the refresh jobs (`/api/cron/*`); any long random string |
 | `STATS_PASSWORD` | optional | Opens the private stats page at `/stats` (browser login, any user name). Without it the page doesn't exist |
 
@@ -127,6 +124,7 @@ Open [http://localhost:3000](http://localhost:3000). The camera needs HTTPS on a
 | `pnpm db:studio` | Browse the database (game cache, photo logs, feedback) |
 | `pnpm import:ranks <zip>` | Import BGG's ranks dump into the name index |
 | `pnpm export:photo-logs` | Turn logged photos into evaluation data |
+| `pnpm eval:gemini <run>` | Ask Gemini about the evaluation photos ([Evaluation](#evaluation)) |
 | `pnpm stats [days]` | Visits by source (QR code, `?ref=`, `?utm_source=`, referring site), how many scanned, photos, installs, feedback |
 | `pnpm screenshots` | The phone screens on the desktop landing, in every language (`public/screens/`; needs `pnpm build`) |
 
@@ -142,12 +140,11 @@ lib/
   matching/            reading titles, name similarity, ranking candidates, Gemini matching
   game/                game cache, name index, rankings, search, photo logs
   bgg/                 BoardGameGeek API client and XML parsing
-  gemini/, ocr/        recognition clients
+  gemini/              recognition client
   i18n/                languages, detection, dictionaries, number and plural formatting
 db/schema.ts           Drizzle schema; migrations in drizzle/
 proxy.ts               picks each page's language
-ocr-service/           PaddleOCR HTTP service (Docker)
-ocr-eval/              recognition benchmark
+recognition-eval/      recognition benchmark
 e2e/                   Playwright tests
 ```
 
@@ -167,25 +164,23 @@ Native-speaker reviews of the translations are very welcome.
 
 ## Evaluation
 
-[`ocr-eval/`](ocr-eval) measures how often a photo gives the right game: official covers, BGG gallery photos, generated phone shots and shelves, split into a tuning half and a held-out half. Each script explains its use at the top: `fetch_gallery.py` (photos), `make_photos.py` (phone shots and shelves), `run_ocr.py` (OCR), then:
+[`recognition-eval/`](recognition-eval) measures how often a photo gives the right game: official covers, BGG gallery photos, generated phone shots and shelves, split into a tuning half and a held-out half. Each script explains its use at the top: `fetch_gallery.py` (photos), `make_photos.py` (phone shots and shelves), `run-gemini.ts` (what Gemini names on each photo, `pnpm eval:gemini <run>`), then:
 
 ```bash
-OCR_EVAL=1 pnpm exec vitest run ocr-eval
+RECOGNITION_EVAL=1 pnpm exec vitest run recognition-eval
 ```
 
-Photos and results stay in `ocr-eval/data` and `ocr-eval/out`, which are git-ignored: gallery photos belong to the people who uploaded them.
+`pnpm export:photo-logs` adds the app's real photos (Gemini's answers and the games users confirmed) as the `gemini-app` run. Photos and results stay in `recognition-eval/data` and `recognition-eval/out`, which are git-ignored: gallery photos belong to the people who uploaded them.
 
 ## Deployment
 
 The app is made for Vercel: connect the repository, add the environment variables, and deploy. Each build runs the database migrations first (`vercel-build`). Three cron jobs ([`vercel.json`](vercel.json)): the top 1000 BGG games weekly and the hot list daily keep the cache fresh, and a daily cleanup deletes what the privacy page says isn't kept ([`lib/retention.ts`](lib/retention.ts)).
 
-The OCR service runs anywhere Docker does; [`ocr-service/README.md`](ocr-service/README.md) covers running it locally and deploying it on Coolify.
-
 ## Data and privacy
 
 The app's [privacy page](https://meeple-scan.com/privacy) says the same, for users.
 
-- **Photos are never stored.** They are read by the OCR service and by Gemini on a paid plan (Google doesn't use paid-tier requests to improve its products). Each photo log keeps only the text OCR read, the names Gemini gave, the games shown and what the user confirmed or picked instead, to improve matching. No IP address or device id. Kept 12 months.
+- **Photos are never stored.** They are read by Gemini on a paid plan (Google doesn't use paid-tier requests to improve its products). Each photo log keeps only the names Gemini gave, the games shown and what the user confirmed or picked instead, to improve matching. No IP address or device id. Kept 12 months.
 - **Usage events** ([`lib/events`](lib/events)) count visits (page, language, phone or computer, `?ref=`/`?utm_source=` or the referring site), photos (camera or gallery) and installs, in our own `events` table instead of a paid analytics plan. No cookie, no IP address, nothing stored on the device: a random id held in memory ties one page load's events together. Automated browsers and bots aren't counted. Kept 12 months. Read them with `pnpm stats`, or live at `/stats` (password: `STATS_PASSWORD`), which also lists the feedback.
 - History stays on the phone (`localStorage`).
 - Feedback keeps the message, the language, and an email only if the sender gives one. Kept 24 months.

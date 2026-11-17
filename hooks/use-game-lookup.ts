@@ -34,7 +34,7 @@ export type LookupState = { key: string } & (
   | { phase: "loading" }
   | { phase: "found"; photo: string; front: Shown; stack: Shown[]; position: number; logId?: string; pending?: boolean }
   | { phase: "not_found"; text: string[]; logId?: string }
-  | { phase: "unavailable"; service: "ocr" | "bgg" }
+  | { phase: "unavailable"; service: "reader" | "bgg" }
   | { phase: "error" }
 );
 

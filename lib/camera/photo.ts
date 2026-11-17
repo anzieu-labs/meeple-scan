@@ -1,4 +1,4 @@
-/** Longest side sent to OCR and Gemini: the size the evaluation was run at, ~150–300 KB as JPEG. */
+/** Longest side sent to Gemini, ~150–300 KB as JPEG. */
 const MAX_SIDE = 1280;
 
 /** Part of a source image, in its own pixels. */

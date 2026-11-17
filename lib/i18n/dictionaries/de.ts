@@ -52,7 +52,7 @@ export const de: Dictionary = {
     qrTitle: "Auf dem Handy öffnen",
     qrHint: "Richte die Kamera deines Handys auf diesen Code.",
     features: [
-      { title: "OCR + KI-Bilderkennung", text: "Rund 90 % der Schachteln erkannt, auch ein ganzes Regal" },
+      { title: "KI-Bilderkennung", text: "Rund 90 % der Schachteln erkannt, auch ein ganzes Regal" },
       { title: "Komplett kostenlos", text: "Keine Werbung, kein Bezahlabo" },
       { title: "Kein Konto", text: "Nichts anmelden: öffnen und scannen" },
       { title: "Als App installierbar", text: "Auf den Startbildschirm legen, ohne App Store" },
@@ -73,7 +73,7 @@ export const de: Dictionary = {
       },
       {
         q: "Wie zuverlässig ist das?",
-        a: "OCR liest den Text auf der Schachtel und ein KI-Bildmodell erkennt das Spiel: rund 90 % der Schachteln auf Anhieb. Sonst wählst du das richtige Spiel mit einem Tipp.",
+        a: "Ein KI-Bildmodell liest die Schachtel und erkennt das Spiel: rund 90 % der Schachteln auf Anhieb. Sonst wählst du das richtige Spiel mit einem Tipp.",
       },
       {
         q: "Ist das kostenlos?",
@@ -110,11 +110,11 @@ export const de: Dictionary = {
     sections: [
       {
         title: "Deine Fotos",
-        text: "Ein Foto wird nur gesendet, um gelesen zu werden, und danach vergessen: Es wird nie gespeichert. Es geht an unseren Texterkennungsserver (OCR) und an die Gemini-API von Google, die die Spiele darauf erkennen. Wir nutzen den kostenpflichtigen Gemini-Tarif: Google verwendet die Fotos nicht, um seine Produkte zu verbessern.",
+        text: "Ein Foto wird nur gesendet, um gelesen zu werden, und danach vergessen: Es wird nie gespeichert. Es geht an die Gemini-API von Google, die die Spiele darauf erkennt. Wir nutzen den kostenpflichtigen Gemini-Tarif: Google verwendet die Fotos nicht, um seine Produkte zu verbessern.",
       },
       {
         title: "Was von einem Foto bleibt",
-        text: "Um die Erkennung zu verbessern, speichern wir den auf der Schachtel gelesenen Text, die gefundenen Spiele und ob du gesagt hast, dass sie richtig waren. Nichts über dich oder dein Handy. Wird {photoMonths} Monate aufbewahrt.",
+        text: "Um die Erkennung zu verbessern, speichern wir die auf der Schachtel gelesenen Spielnamen, die gefundenen Spiele und ob du gesagt hast, dass sie richtig waren. Nichts über dich oder dein Handy. Wird {photoMonths} Monate aufbewahrt.",
       },
       {
         title: "Nutzungsstatistiken",
@@ -314,6 +314,7 @@ export const de: Dictionary = {
     intro: "Jede Version von Meeple Scan, die neueste zuerst, und was sie geändert hat.",
     version: "Version {version}",
     releases: {
+      "1.1.2": ["Fotos werden jetzt nur noch von Googles Gemini gelesen: Sie gehen nicht mehr zusätzlich über unseren eigenen Texterkennungsserver."],
       "1.1.1": ["Dreh dein Handy quer, um ein ganzes Regal auf ein Foto zu bekommen."],
       "1.1.0": [
         "Wähle, was neben jedem Spiel steht, nach dem Scannen und in deinen Listen: Wertung, Komplexität, Spieldauer oder beste Spieleranzahl. Du findest es in den Einstellungen.",

@@ -55,7 +55,7 @@ describe("matchVisionGames", () => {
     ]);
   });
 
-  it("gives up when the main game matches nothing, so OCR is used instead", async () => {
+  it("gives up when the main game matches nothing", async () => {
     expect(await names(["Unknown Game", "Unknown Game"], ["CATAN", "Catan"])).toBeNull();
     expect(await names()).toBeNull();
   });

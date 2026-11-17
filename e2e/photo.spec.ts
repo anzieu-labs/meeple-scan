@@ -534,7 +534,7 @@ test("an unrecognised box then found by name search is sent to the photo log", a
 });
 
 test("explains when the box reader is down and keeps search available", async ({ page }) => {
-  await fakeApi(page, { status: "unavailable", service: "ocr" });
+  await fakeApi(page, { status: "unavailable", service: "reader" });
   await openCamera(page);
   await takePhoto(page);
   await expect(page.getByText("Box reader unavailable")).toBeVisible();

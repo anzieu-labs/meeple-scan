@@ -59,7 +59,7 @@ export const en = {
     qrTitle: "Open it on your phone",
     qrHint: "Point your phone's camera at this code.",
     features: [
-      { title: "OCR + AI vision", text: "About 90% of boxes recognised, even a whole shelf at once" },
+      { title: "AI vision", text: "About 90% of boxes recognised, even a whole shelf at once" },
       { title: "Totally free", text: "No ads, no paid plan" },
       { title: "No account", text: "Nothing to sign up for: open it and scan" },
       { title: "Installable app", text: "Add it to your home screen, no app store needed" },
@@ -80,7 +80,7 @@ export const en = {
       },
       {
         q: "How accurate is it?",
-        a: "OCR reads the text on the box and an AI vision model names the game: about 90% of boxes are recognised right away. If not, you pick the right game in a tap.",
+        a: "An AI vision model reads the box and names the game: about 90% of boxes are recognised right away. If not, you pick the right game in a tap.",
       },
       {
         q: "Is it free?",
@@ -117,11 +117,11 @@ export const en = {
     sections: [
       {
         title: "Your photos",
-        text: "A photo is only sent to be read, then forgotten: it is never stored. It goes to our text-reading (OCR) server and to Google's Gemini API, which name the games on it. We use Gemini's paid plan: Google doesn't use the photos to improve its products.",
+        text: "A photo is only sent to be read, then forgotten: it is never stored. It goes to Google's Gemini API, which names the games on it. We use Gemini's paid plan: Google doesn't use the photos to improve its products.",
       },
       {
         title: "What a photo leaves behind",
-        text: "To make recognition better, we keep the text read on the box, the games found and whether you said they were right. Nothing about you or your phone. Kept {photoMonths} months.",
+        text: "To make recognition better, we keep the game names read on the box, the games found and whether you said they were right. Nothing about you or your phone. Kept {photoMonths} months.",
       },
       {
         title: "Usage statistics",
@@ -319,6 +319,7 @@ export const en = {
     version: "Version {version}",
     /** What each version changed, for people using the app (not a commit log). Newest first, matching RELEASES. */
     releases: {
+      "1.1.2": ["Photos are now read by Google's Gemini alone: they no longer go through our own text-reading server too."],
       "1.1.1": ["Turn your phone sideways to fit a whole shelf in one photo."],
       "1.1.0": [
         "Choose what shows beside every game, in a scan and in your lists: its rating, complexity, playing time or best player count. It's in Settings.",

@@ -21,8 +21,8 @@ const SQUASHED_SIMILARITY = 0.6;
  * best-matching run of words in each name, so "oiticulture" finds Viticulture and "arcassonne"
  * finds Carcassonne. Best match first, more-rated games first on ties. "Best" adds whole-name similarity:
  * word_similarity alone rates "arcassonne" higher in "carcassonne amazonas" (the next word's first letter
- * counts as a match) than in "carcassonne" itself. Names are also compared without spaces, since OCR often
- * runs big letters together: "forsale" finds For Sale, "skyteam" Sky Team.
+ * counts as a match) than in "carcassonne" itself. Names are also compared without spaces, since boxes often
+ * run big letters together: "forsale" finds For Sale, "skyteam" Sky Team.
  */
 export async function searchNameIndex(
   query: string,

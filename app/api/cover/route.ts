@@ -1,7 +1,7 @@
 import { recognizeCover } from "@/lib/game/cover";
 import type { CoverEvent } from "@/lib/game/types";
 
-// Gemini (~1.5 s) and OCR (~1–5 s on the VPS) side by side, plus a BGG search per game on the photo.
+// Gemini (~1.5 s, 8 s at most), plus a BGG search per game on the photo.
 export const maxDuration = 60;
 
 /** Vercel caps request bodies at 4.5 MB; the phone sends a ~1280 px JPEG (~150–300 KB). */

@@ -18,10 +18,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
-    // OCR evaluation: Python virtualenv, images and generated output.
-    "ocr-eval/.venv/**",
-    "ocr-eval/data/**",
-    "ocr-eval/out/**",
+    // Recognition evaluation: Python virtualenv, images and generated output.
+    "recognition-eval/.venv/**",
+    "recognition-eval/data/**",
+    "recognition-eval/out/**",
   ]),
 ]);
 

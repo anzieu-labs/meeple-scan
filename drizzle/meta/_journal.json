@@ -92,6 +92,13 @@
       "when": 1793642678746,
       "tag": "0012_events",
       "breakpoints": true
+    },
+    {
+      "idx": 13,
+      "version": "7",
+      "when": 1794934897374,
+      "tag": "0013_drop_ocr_lines",
+      "breakpoints": true
     }
   ]
 }

@@ -18,8 +18,8 @@ export interface CoverGame {
 export type CoverResult =
   | { status: "matched"; games: CoverGame[]; text: string[]; logId: string }
   | { status: "not_found"; text: string[]; logId: string }
-  /** `ocr`: the box reader is down. `bgg`: BoardGameGeek refused (usually too many requests). */
-  | { status: "unavailable"; service: "ocr" | "bgg" };
+  /** `reader`: the box reader (Gemini) is off, down or too slow. `bgg`: BoardGameGeek refused (usually too many requests). */
+  | { status: "unavailable"; service: "reader" | "bgg" };
 
 /**
  * What `POST /api/cover` streams, one JSON object per line: each game as soon as it's found (`more`: other

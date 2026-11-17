@@ -35,7 +35,7 @@ export function game(overrides: Partial<GameCard> & Pick<GameCard, "bggId" | "na
 
 /**
  * Serves `POST /api/cover` with canned answers (one per photo, in order; the last one repeats) and
- * `GET /api/games/:id` from the games they contain, so browser tests never call the OCR server or BGG.
+ * `GET /api/games/:id` from the games they contain, so browser tests never call Gemini or BGG.
  * Returns the uploads received.
  */
 export async function fakeApi(page: Page, ...answers: CoverResult[]) {

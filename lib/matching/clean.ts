@@ -81,6 +81,4 @@ export interface MatchInput {
   phrases: Phrase[];
   /** All text read on the box, for spotting "expansion", "junior", etc. */
   titles: string[];
-  /** For another title on the photo: its letter height compared with the main title's. */
-  relativeSize?: number;
 }
