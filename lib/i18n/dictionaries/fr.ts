@@ -3,7 +3,8 @@ import type { Dictionary } from "./en";
 /** French. " " is the non-breaking space French puts before ? ! : and inside « ». */
 export const fr: Dictionary = {
   meta: {
-    title: "Meeple Scan – Scanner de jeux de société avec les notes BoardGameGeek",
+    title:
+      "Meeple Scan – Scanner de jeux de société avec les notes BoardGameGeek",
     description:
       "Photographie une boîte de jeu de société ou toute une étagère pour voir la note BoardGameGeek, la complexité et le meilleur nombre de joueurs de chaque jeu. Et les jeux du moment.",
     features: [
@@ -16,8 +17,12 @@ export const fr: Dictionary = {
       "Recherche tolérante aux fautes sur tous les jeux de BoardGameGeek",
       "Historique des jeux scannés, gardé sur ton téléphone",
     ],
-    shareHeadline: "Photographie ton étagère, découvre la note de chaque jeu.",
-    sharePoints: ["Note BoardGameGeek", "Complexité", "Meilleur nombre de joueurs"],
+    shareHeadline: "Scanne avant d'y jouer.",
+    sharePoints: [
+      "Note BoardGameGeek",
+      "Complexité",
+      "Meilleur nombre de joueurs",
+    ],
     rankingsTitle: "Jeux de société du moment et mieux classés",
     rankingsDescription:
       "Les jeux de société les plus consultés sur BoardGameGeek aujourd'hui, et les 100 mieux classés de tous les temps, avec leur note, leur complexité et le meilleur nombre de joueurs.",
@@ -25,7 +30,8 @@ export const fr: Dictionary = {
     searchDescription:
       "Trouve n'importe quel jeu de BoardGameGeek par son nom, même mal orthographié ou dans une autre langue, avec sa note, sa complexité et le meilleur nombre de joueurs.",
     historyTitle: "Tes jeux",
-    historyDescription: "Les jeux de société que tu as scannés, gardés sur ce téléphone.",
+    historyDescription:
+      "Les jeux de société que tu as scannés, gardés sur ce téléphone.",
     settingsTitle: "Réglages",
     settingsDescription: "Langue, commentaires et à propos de Meeple Scan.",
     hotList: "Jeux de société du moment",
@@ -52,11 +58,20 @@ export const fr: Dictionary = {
     qrTitle: "Ouvre-le sur ton téléphone",
     qrHint: "Vise ce code avec l'appareil photo de ton téléphone.",
     features: [
-      { title: "IA de vision", text: "Environ 90\u00a0% des boîtes reconnues, même toute une étagère" },
+      {
+        title: "IA de vision",
+        text: "Environ 90\u00a0% des boîtes reconnues, même toute une étagère",
+      },
       { title: "Entièrement gratuit", text: "Sans pub, sans offre payante" },
       { title: "Sans compte", text: "Rien à créer\u00a0: ouvre et scanne" },
-      { title: "Installable", text: "Ajoute-le à ton écran d'accueil, sans store" },
-      { title: "Historique sur ton téléphone", text: "Tes jeux restent sur ton appareil, pas sur nos serveurs" },
+      {
+        title: "Installable",
+        text: "Ajoute-le à ton écran d'accueil, sans store",
+      },
+      {
+        title: "Historique sur ton téléphone",
+        text: "Tes jeux restent sur ton appareil, pas sur nos serveurs",
+      },
     ],
     screensTitle: "Une photo, toutes les stats",
     screens: [
@@ -138,7 +153,14 @@ export const fr: Dictionary = {
       },
     ],
   },
-  tabs: { label: "Navigation", history: "Historique", scan: "Scan", rankings: "Classements", search: "Recherche", settings: "Réglages" },
+  tabs: {
+    label: "Navigation",
+    history: "Historique",
+    scan: "Scan",
+    rankings: "Classements",
+    search: "Recherche",
+    settings: "Réglages",
+  },
   settings: {
     title: "Réglages",
     language: "Langue",
@@ -160,13 +182,17 @@ export const fr: Dictionary = {
   scanner: {
     cameraErrors: {
       insecure: "La caméra a besoin d'une connexion sécurisée (https).",
-      permission: "L'accès à la caméra est bloqué. Autorise-le dans les réglages du navigateur, puis réessaie.",
-      "no-camera": "Aucune caméra trouvée sur cet appareil. Tu peux quand même chercher par nom.",
-      "in-use": "La caméra est utilisée par une autre app. Ferme-la et réessaie.",
+      permission:
+        "L'accès à la caméra est bloqué. Autorise-le dans les réglages du navigateur, puis réessaie.",
+      "no-camera":
+        "Aucune caméra trouvée sur cet appareil. Tu peux quand même chercher par nom.",
+      "in-use":
+        "La caméra est utilisée par une autre app. Ferme-la et réessaie.",
       unknown: "La caméra n'a pas pu démarrer. Réessaie.",
     },
     tryAgain: "Réessayer",
-    starting: "Démarrage de la caméra… Autorise l'accès si le navigateur le demande.",
+    starting:
+      "Démarrage de la caméra… Autorise l'accès si le navigateur le demande.",
     frameHint: "Cadre les titres des jeux",
     takePhoto: "Photo de la boîte",
     zoomIn: "Zoomer",
@@ -184,30 +210,50 @@ export const fr: Dictionary = {
     allGames: "Tous les jeux",
     pager: "{position} sur {total} sur cette photo",
     loading: { title: "Lecture de la boîte…", hint: "Quelques secondes" },
-    notFound: { title: "Boîte non reconnue", hint: "Touche pour chercher le jeu par nom" },
-    bggBusy: { title: "BoardGameGeek est saturé", hint: "Réessaie dans quelques secondes" },
-    readerDown: { title: "Lecteur de boîte indisponible", hint: "Touche pour les options" },
-    error: { title: "Un problème est survenu", hint: "Touche pour les options" },
+    notFound: {
+      title: "Boîte non reconnue",
+      hint: "Touche pour chercher le jeu par nom",
+    },
+    bggBusy: {
+      title: "BoardGameGeek est saturé",
+      hint: "Réessaie dans quelques secondes",
+    },
+    readerDown: {
+      title: "Lecteur de boîte indisponible",
+      hint: "Touche pour les options",
+    },
+    error: {
+      title: "Un problème est survenu",
+      hint: "Touche pour les options",
+    },
     loadingText: "Lecture du texte de la boîte et recherche sur BoardGameGeek…",
-    notFoundText: "Nous n'avons pas reconnu cette boîte. Réessaie avec le titre bien dans le cadre, ou cherche par nom.",
+    notFoundText:
+      "Nous n'avons pas reconnu cette boîte. Réessaie avec le titre bien dans le cadre, ou cherche par nom.",
     readOnBox: "Lu sur la boîte : {text}",
     takeAnother: "Reprendre une photo",
     tryAgain: "Réessayer",
-    errorText: "Un problème est survenu en lisant cette photo. Réessaie, ou cherche par nom.",
-    bggBusyText: "BoardGameGeek reçoit trop de demandes en ce moment. Réessaie dans quelques secondes, ou cherche par nom.",
-    readerDownText: "Le lecteur de boîte ne répond pas. Réessaie dans un instant, ou cherche par nom.",
+    errorText:
+      "Un problème est survenu en lisant cette photo. Réessaie, ou cherche par nom.",
+    bggBusyText:
+      "BoardGameGeek reçoit trop de demandes en ce moment. Réessaie dans quelques secondes, ou cherche par nom.",
+    readerDownText:
+      "Le lecteur de boîte ne répond pas. Réessaie dans un instant, ou cherche par nom.",
     whichGame: "Quel est ce jeu ?",
     back: "Retour",
     notInList: "Pas dans la liste\u00a0? Cherche sur BoardGameGeek",
     searchByName: "Chercher sur BoardGameGeek par nom",
-    confirmFirst: "Dis-nous si c'est bien le jeu de ta boîte pour voir sa note, sa complexité et le meilleur nombre de joueurs.",
+    confirmFirst:
+      "Dis-nous si c'est bien le jeu de ta boîte pour voir sa note, sa complexité et le meilleur nombre de joueurs.",
     boxOf: "Boîte de {name}",
     check: "Est-ce le jeu de ta boîte\u00a0?",
     wrongGame: "Mauvais jeu",
     rightGame: "Bon jeu",
   },
   summary: {
-    games: { one: "{count} jeu sur cette photo", other: "{count} jeux sur cette photo" },
+    games: {
+      one: "{count} jeu sur cette photo",
+      other: "{count} jeux sur cette photo",
+    },
     lookingForMore: "Recherche d'autres jeux…",
     tellUs: "Dis-nous lesquels sont justes",
     wrongGame: "Mauvais jeu : {name}",
@@ -221,9 +267,26 @@ export const fr: Dictionary = {
     confirmFirst: "À confirmer",
     score: "Note {value} sur 10, {label}",
     fewRatings: "Peu de votes",
-    tiers: { excellent: "Excellent", good: "Bon", average: "Moyen", poor: "Faible", none: "Pas assez de votes" },
-    stats: { rating: "Note", complexity: "Complexité", time: "Durée", players: "Joueurs" },
-    weights: { light: "Légère", mediumLight: "Moyenne-légère", medium: "Moyenne", mediumHeavy: "Moyenne-élevée", heavy: "Élevée" },
+    tiers: {
+      excellent: "Excellent",
+      good: "Bon",
+      average: "Moyen",
+      poor: "Faible",
+      none: "Pas assez de votes",
+    },
+    stats: {
+      rating: "Note",
+      complexity: "Complexité",
+      time: "Durée",
+      players: "Joueurs",
+    },
+    weights: {
+      light: "Légère",
+      mediumLight: "Moyenne-légère",
+      medium: "Moyenne",
+      mediumHeavy: "Moyenne-élevée",
+      heavy: "Élevée",
+    },
     minutes: "min",
     bestCount: "Idéal",
   },
@@ -286,21 +349,29 @@ export const fr: Dictionary = {
     lists: "Classement",
     hot: "Du moment",
     top: "Mieux classés",
-    hotFailed: "Les jeux du moment de BoardGameGeek n'ont pas pu être chargés. Réessaie dans un instant.",
-    topFailed: "Les jeux les mieux classés n'ont pas pu être chargés. Réessaie dans un instant.",
+    hotFailed:
+      "Les jeux du moment de BoardGameGeek n'ont pas pu être chargés. Réessaie dans un instant.",
+    topFailed:
+      "Les jeux les mieux classés n'ont pas pu être chargés. Réessaie dans un instant.",
     rankDetail: "Rang BGG n° {rank} · {count} votes",
     ratings: "{count} votes",
     loading: "Chargement des classements",
   },
   history: {
     title: "Tes jeux",
-    count: { one: "{count} sur ce téléphone", other: "{count} sur ce téléphone" },
+    count: {
+      one: "{count} sur ce téléphone",
+      other: "{count} sur ce téléphone",
+    },
     empty: "Les jeux que tu photographies apparaissent ici.",
     remove: "Retirer {name} de l'historique",
     clear: "Effacer l'historique",
   },
   drawer: { failed: "Ce jeu n'a pas pu être chargé. Réessaie." },
-  bgg: { poweredBy: "Powered by BGG", credit: "Notes et données des jeux par BoardGameGeek" },
+  bgg: {
+    poweredBy: "Powered by BGG",
+    credit: "Notes et données des jeux par BoardGameGeek",
+  },
   error: {
     title: "L'app a cessé de fonctionner",
     text: "Un problème est survenu sur cette page. Ton historique est toujours enregistré.",
@@ -308,12 +379,19 @@ export const fr: Dictionary = {
   },
   changelog: {
     title: "Nouveautés",
-    intro: "Chaque version de Meeple Scan, de la plus récente à la plus ancienne, et ce qu'elle a changé.",
+    intro:
+      "Chaque version de Meeple Scan, de la plus récente à la plus ancienne, et ce qu'elle a changé.",
     version: "Version {version}",
     releases: {
-      "1.2.0": ["Quand tu partages un lien vers Meeple Scan sur Facebook, LinkedIn ou dans une discussion, son aperçu est maintenant dans ta langue et montre les écrans de l'appli."],
-      "1.1.2": ["Tes photos ne sont plus lues que par Gemini de Google\u00a0: elles ne passent plus par notre propre serveur de lecture de texte."],
-      "1.1.1": ["Tourne ton téléphone à l'horizontale pour faire tenir toute une étagère en une photo."],
+      "1.2.0": [
+        "Quand tu partages un lien vers Meeple Scan sur Facebook, LinkedIn ou dans une discussion, son aperçu est maintenant dans ta langue et montre les écrans de l'appli.",
+      ],
+      "1.1.2": [
+        "Tes photos ne sont plus lues que par Gemini de Google\u00a0: elles ne passent plus par notre propre serveur de lecture de texte.",
+      ],
+      "1.1.1": [
+        "Tourne ton téléphone à l'horizontale pour faire tenir toute une étagère en une photo.",
+      ],
       "1.1.0": [
         "Choisis ce qui s'affiche à côté de chaque jeu, après un scan comme dans tes listes\u00a0: sa note, sa complexité, sa durée ou son nombre idéal de joueurs. C'est dans les Réglages.",
         "Cette page, pour voir ce qui change à chaque version.",
