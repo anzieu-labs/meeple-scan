@@ -16,7 +16,8 @@ export const zhHans: Dictionary = {
       "搜索BoardGameGeek上的所有桌游，打错字也能找到",
       "扫描过的游戏记录，保存在你的手机上",
     ],
-    shareTagline: "拍一下桌游盒子或整个桌游柜，就能看到每款游戏的BoardGameGeek评分、复杂度和最佳人数。",
+    shareHeadline: "拍一下桌游柜，\n每款游戏评分一目了然。",
+    sharePoints: ["BoardGameGeek评分", "复杂度", "最佳人数"],
     rankingsTitle: "今日热门桌游和排名最高的桌游",
     rankingsDescription:
       "今天BoardGameGeek上大家都在看的桌游，以及历来排名前100的桌游，附评分、复杂度和最佳人数。",
@@ -310,6 +311,7 @@ export const zhHans: Dictionary = {
     intro: "Meeple Scan的每个版本及其改动，按从新到旧排列。",
     version: "版本 {version}",
     releases: {
+      "1.2.0": ["在 Facebook、LinkedIn 或聊天中分享 Meeple Scan 链接时，预览现在会使用你的语言，并展示应用的界面。"],
       "1.1.2": ["现在照片只由Google的Gemini识别，不再经过我们自己的文字识别服务器。"],
       "1.1.1": ["把手机横过来，一张照片就能拍下整个书架。"],
       "1.1.0": [

@@ -16,8 +16,8 @@ export const fr: Dictionary = {
       "Recherche tolérante aux fautes sur tous les jeux de BoardGameGeek",
       "Historique des jeux scannés, gardé sur ton téléphone",
     ],
-    shareTagline:
-      "Photographie une boîte de jeu de société ou toute une étagère. Note BoardGameGeek, complexité et meilleur nombre de joueurs de chaque jeu.",
+    shareHeadline: "Photographie ton étagère, découvre la note de chaque jeu.",
+    sharePoints: ["Note BoardGameGeek", "Complexité", "Meilleur nombre de joueurs"],
     rankingsTitle: "Jeux de société du moment et mieux classés",
     rankingsDescription:
       "Les jeux de société les plus consultés sur BoardGameGeek aujourd'hui, et les 100 mieux classés de tous les temps, avec leur note, leur complexité et le meilleur nombre de joueurs.",
@@ -311,6 +311,7 @@ export const fr: Dictionary = {
     intro: "Chaque version de Meeple Scan, de la plus récente à la plus ancienne, et ce qu'elle a changé.",
     version: "Version {version}",
     releases: {
+      "1.2.0": ["Quand tu partages un lien vers Meeple Scan sur Facebook, LinkedIn ou dans une discussion, son aperçu est maintenant dans ta langue et montre les écrans de l'appli."],
       "1.1.2": ["Tes photos ne sont plus lues que par Gemini de Google\u00a0: elles ne passent plus par notre propre serveur de lecture de texte."],
       "1.1.1": ["Tourne ton téléphone à l'horizontale pour faire tenir toute une étagère en une photo."],
       "1.1.0": [

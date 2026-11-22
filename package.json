@@ -1,6 +1,6 @@
 {
   "name": "meeple-scan",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "private": true,
   "license": "MIT",
   "scripts": {
@@ -36,7 +36,7 @@
     "fuzzball": "^2.2.6",
     "lucide-react": "^1.64.0",
     "motion": "^14.8.0",
-    "next": "16.4.3",
+    "next": "16.4.6",
     "pg": "^8.23.1",
     "qrcode": "^1.5.4",
     "react": "19.3.0",
@@ -57,7 +57,7 @@
     "dotenv": "^18.0.9",
     "drizzle-kit": "^0.31.11",
     "eslint": "^9",
-    "eslint-config-next": "16.4.3",
+    "eslint-config-next": "16.4.6",
     "tailwindcss": "^4",
     "typescript": "^5",
     "vitest": "^4.1.12"

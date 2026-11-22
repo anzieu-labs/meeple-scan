@@ -16,8 +16,8 @@ export const it: Dictionary = {
       "Ricerca tollerante agli errori di battitura su tutti i giochi da tavolo di BoardGameGeek",
       "Cronologia dei giochi che hai scansionato, salvata sul tuo telefono",
     ],
-    shareTagline:
-      "Fotografa la scatola di un gioco da tavolo o un intero scaffale. Scopri voto BoardGameGeek, complessità e numero ideale di giocatori di ogni gioco.",
+    shareHeadline: "Fotografa il tuo scaffale e scopri il voto di ogni gioco.",
+    sharePoints: ["Voto BoardGameGeek", "Complessità", "Numero ideale di giocatori"],
     rankingsTitle: "Giochi da tavolo del momento e migliori in classifica",
     rankingsDescription:
       "I giochi da tavolo più visti oggi su BoardGameGeek e i 100 migliori in classifica di sempre, con voto, complessità e numero ideale di giocatori.",
@@ -313,6 +313,7 @@ export const it: Dictionary = {
     intro: "Ogni versione di Meeple Scan, dalla più recente, e cosa ha cambiato.",
     version: "Versione {version}",
     releases: {
+      "1.2.0": ["Quando condividi un link a Meeple Scan su Facebook, LinkedIn o in chat, l'anteprima ora è nella tua lingua e mostra le schermate dell'app."],
       "1.1.2": ["Ora le foto vengono lette solo da Gemini di Google: non passano più anche dal nostro server di lettura del testo."],
       "1.1.1": ["Gira il telefono in orizzontale per far stare un intero scaffale in una foto."],
       "1.1.0": [

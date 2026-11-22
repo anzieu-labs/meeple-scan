@@ -16,8 +16,8 @@ export const ko: Dictionary = {
       "오타가 있어도 BoardGameGeek의 모든 보드게임 검색",
       "스캔한 게임 기록을 내 폰에 저장",
     ],
-    shareTagline:
-      "보드게임 박스나 책장 전체를 찍어 보세요. 게임별 BoardGameGeek 평점, 난이도, 베스트 인원을 바로 볼 수 있어요.",
+    shareHeadline: "책장을 찍으면\n모든 게임 평점이 한눈에.",
+    sharePoints: ["BoardGameGeek 평점", "난이도", "베스트 인원"],
     rankingsTitle: "오늘의 인기 보드게임과 역대 최고 순위",
     rankingsDescription:
       "오늘 BoardGameGeek에서 가장 많이 보는 보드게임과 역대 상위 100위 게임을 평점, 난이도, 베스트 인원과 함께 보여줘요.",
@@ -311,6 +311,7 @@ export const ko: Dictionary = {
     intro: "Meeple Scan의 모든 버전과 바뀐 점을 최신순으로 정리했어요.",
     version: "버전 {version}",
     releases: {
+      "1.2.0": ["Facebook, LinkedIn이나 채팅에서 Meeple Scan 링크를 공유하면 이제 미리보기가 사용 중인 언어로 나오고 앱 화면도 보여요."],
       "1.1.2": ["이제 사진은 Google의 Gemini만 읽어요. 저희 자체 텍스트 인식 서버로는 더 이상 전송되지 않아요."],
       "1.1.1": ["폰을 가로로 돌리면 선반 전체를 사진 한 장에 담을 수 있어요."],
       "1.1.0": [

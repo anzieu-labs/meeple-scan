@@ -24,7 +24,8 @@ export const en = {
       "Typo-tolerant search across every board game on BoardGameGeek",
       "History of the games you scanned, kept on your phone",
     ],
-    shareTagline: "Snap a board game box or a whole shelf. See each game's BoardGameGeek rating, complexity and best player count.",
+    shareHeadline: "Snap your shelf. See every game's rating.",
+    sharePoints: ["BoardGameGeek rating", "Complexity", "Best player count"],
     rankingsTitle: "Hot board games today and top-ranked games",
     rankingsDescription:
       "The board games everyone is looking at on BoardGameGeek today, and the 100 best-ranked games of all time, with ratings, complexity and best player count.",
@@ -319,6 +320,7 @@ export const en = {
     version: "Version {version}",
     /** What each version changed, for people using the app (not a commit log). Newest first, matching RELEASES. */
     releases: {
+      "1.2.0": ["When you share a Meeple Scan link on Facebook, LinkedIn or in a chat, its preview is now in your language and shows the app's screens."],
       "1.1.2": ["Photos are now read by Google's Gemini alone: they no longer go through our own text-reading server too."],
       "1.1.1": ["Turn your phone sideways to fit a whole shelf in one photo."],
       "1.1.0": [

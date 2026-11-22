@@ -16,8 +16,8 @@ export const ja: Dictionary = {
       "BoardGameGeekの全ボードゲームを表記ゆれに強い検索で",
       "スキャンしたゲームの履歴をスマホに保存",
     ],
-    shareTagline:
-      "ボードゲームの箱や棚ごと撮影するだけ。各ゲームのBoardGameGeek評価、重さ、ベストプレイ人数がわかります。",
+    shareHeadline: "棚を撮るだけで、\nゲームの評価がわかる。",
+    sharePoints: ["BoardGameGeek評価", "重さ", "ベストプレイ人数"],
     rankingsTitle: "いま話題のボードゲームと歴代ランキング",
     rankingsDescription:
       "BoardGameGeekで今日注目されているボードゲームと、歴代上位100タイトルを、評価・重さ・ベストプレイ人数つきで紹介します。",
@@ -311,6 +311,7 @@ export const ja: Dictionary = {
     intro: "Meeple Scanの各バージョンと変更点を、新しい順に紹介します。",
     version: "バージョン {version}",
     releases: {
+      "1.2.0": ["Facebook、LinkedIn、チャットでMeeple Scanのリンクを共有すると、プレビューがあなたの言語になり、アプリの画面も表示されるようになりました。"],
       "1.1.2": ["写真の読み取りはGoogleのGeminiだけで行うようになりました。当サービス独自の文字読み取りサーバーには送られなくなりました。"],
       "1.1.1": ["スマホを横向きにすると、棚全体を1枚の写真に収められます。"],
       "1.1.0": [

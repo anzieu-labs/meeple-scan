@@ -54,8 +54,9 @@ export function pageMetadata({
 }): Metadata {
   const url = localePath(locale, path);
   const full = home ? title : `${title} · ${SITE.name}`;
-  // The share image from app/opengraph-image.tsx, which a page's own `openGraph` would otherwise drop.
-  const image = { url: "/opengraph-image", width: 1200, height: 630, alt: SITE.title };
+  // The language's share image (app/[lang]/opengraph-image.tsx), which a page's own `openGraph` would otherwise
+  // drop. English's too is under its prefix: proxy.ts leaves these addresses alone.
+  const image = { url: `/${locale}/opengraph-image`, width: 1200, height: 630, alt: full };
   return {
     title: home ? { absolute: title } : title,
     description,

@@ -16,8 +16,8 @@ export const ptBR: Dictionary = {
       "Busca que tolera erros de digitação em todos os jogos do BoardGameGeek",
       "Histórico dos jogos que você escaneou, salvo no seu celular",
     ],
-    shareTagline:
-      "Fotografe a caixa de um jogo de tabuleiro ou uma estante inteira. Veja a nota no BoardGameGeek, a complexidade e o melhor número de jogadores de cada jogo.",
+    shareHeadline: "Fotografe sua estante e veja a nota de cada jogo.",
+    sharePoints: ["Nota no BoardGameGeek", "Complexidade", "Melhor número de jogadores"],
     rankingsTitle: "Jogos de tabuleiro em alta e mais bem ranqueados",
     rankingsDescription:
       "Os jogos de tabuleiro que todo mundo está olhando hoje no BoardGameGeek e os 100 mais bem ranqueados de todos os tempos, com nota, complexidade e melhor número de jogadores.",
@@ -314,6 +314,7 @@ export const ptBR: Dictionary = {
     intro: "Cada versão do Meeple Scan, da mais recente à mais antiga, e o que mudou.",
     version: "Versão {version}",
     releases: {
+      "1.2.0": ["Quando você compartilha um link do Meeple Scan no Facebook, no LinkedIn ou em um chat, a prévia agora fica no seu idioma e mostra as telas do app."],
       "1.1.2": ["Agora as fotos são lidas só pelo Gemini do Google: elas não passam mais também pelo nosso próprio servidor de leitura de texto."],
       "1.1.1": ["Vire o celular na horizontal para caber uma estante inteira em uma foto."],
       "1.1.0": [

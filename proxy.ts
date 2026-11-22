@@ -51,6 +51,6 @@ export function proxy(request: NextRequest) {
 
 export const config = {
   // Pages only: not the API, Next's files, files with an extension (robots.txt, manifest, images) or the
-  // generated icons and share image.
-  matcher: ["/((?!api/|_next/|opengraph-image|apple-icon|icon|pwa-icons/|.*\\.).*)"],
+  // generated icons and share images (one per language, "/en/opengraph-image" included).
+  matcher: ["/((?!api/|_next/|[^/]+/opengraph-image|apple-icon|icon|pwa-icons/|.*\\.).*)"],
 };

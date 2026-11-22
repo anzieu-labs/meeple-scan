@@ -16,8 +16,8 @@ export const pl: Dictionary = {
       "Wyszukiwarka odporna na literówki, obejmująca wszystkie gry z BoardGameGeek",
       "Historia zeskanowanych gier, zapisana w telefonie",
     ],
-    shareTagline:
-      "Zrób zdjęcie pudełka gry planszowej lub całej półki. Zobacz ocenę BoardGameGeek, złożoność i najlepszą liczbę graczy każdej gry.",
+    shareHeadline: "Zrób zdjęcie półki i zobacz ocenę każdej gry.",
+    sharePoints: ["Ocena BoardGameGeek", "Złożoność", "Najlepsza liczba graczy"],
     rankingsTitle: "Gorące gry planszowe dziś i najlepsze w rankingu",
     rankingsDescription:
       "Gry planszowe, którymi wszyscy interesują się dziś na BoardGameGeek, i 100 najwyżej ocenianych gier wszech czasów, z oceną, złożonością i najlepszą liczbą graczy.",
@@ -329,6 +329,7 @@ export const pl: Dictionary = {
     intro: "Każda wersja Meeple Scan, od najnowszej, i co w niej się zmieniło.",
     version: "Wersja {version}",
     releases: {
+      "1.2.0": ["Gdy udostępniasz link do Meeple Scan na Facebooku, LinkedInie lub w czacie, podgląd jest teraz w twoim języku i pokazuje ekrany aplikacji."],
       "1.1.2": ["Zdjęcia odczytuje teraz tylko Gemini od Google: nie trafiają już dodatkowo na nasz własny serwer odczytujący tekst."],
       "1.1.1": ["Obróć telefon poziomo, żeby zmieścić całą półkę na jednym zdjęciu."],
       "1.1.0": [

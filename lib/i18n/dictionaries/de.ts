@@ -16,8 +16,8 @@ export const de: Dictionary = {
       "Fehlertolerante Suche in allen Brettspielen auf BoardGameGeek",
       "Verlauf deiner gescannten Spiele, gespeichert auf deinem Handy",
     ],
-    shareTagline:
-      "Fotografiere eine Spieleschachtel oder ein ganzes Regal. Sieh für jedes Spiel BoardGameGeek-Wertung, Komplexität und beste Spieleranzahl.",
+    shareHeadline: "Regal knipsen, Wertung jedes Spiels sehen.",
+    sharePoints: ["BoardGameGeek-Wertung", "Komplexität", "Beste Spieleranzahl"],
     rankingsTitle: "Angesagte und bestplatzierte Brettspiele",
     rankingsDescription:
       "Die Brettspiele, die heute auf BoardGameGeek alle anschauen, und die 100 bestplatzierten aller Zeiten, mit Wertung, Komplexität und bester Spieleranzahl.",
@@ -314,6 +314,7 @@ export const de: Dictionary = {
     intro: "Jede Version von Meeple Scan, die neueste zuerst, und was sie geändert hat.",
     version: "Version {version}",
     releases: {
+      "1.2.0": ["Wenn du einen Link zu Meeple Scan auf Facebook, LinkedIn oder im Chat teilst, ist die Vorschau jetzt in deiner Sprache und zeigt die Bildschirme der App."],
       "1.1.2": ["Fotos werden jetzt nur noch von Googles Gemini gelesen: Sie gehen nicht mehr zusätzlich über unseren eigenen Texterkennungsserver."],
       "1.1.1": ["Dreh dein Handy quer, um ein ganzes Regal auf ein Foto zu bekommen."],
       "1.1.0": [

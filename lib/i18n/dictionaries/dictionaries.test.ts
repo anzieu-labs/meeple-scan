@@ -27,10 +27,11 @@ describe.each(LOCALES.filter((locale) => locale !== "en"))("%s", (locale) => {
     }
   });
 
-  it("keeps the brand, and has the same number of features and keywords", () => {
+  it("keeps the brand, and has the same number of features, share image points and keywords", () => {
     expect(t.meta.title.startsWith("Meeple Scan")).toBe(true);
     expect(t.bgg.poweredBy).toBe("Powered by BGG");
     expect(t.meta.features).toHaveLength(en.meta.features.length);
+    expect(t.meta.sharePoints).toHaveLength(en.meta.sharePoints.length);
     expect(t.meta.keywords.length).toBeGreaterThanOrEqual(8);
   });
 });
