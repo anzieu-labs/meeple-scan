@@ -21,7 +21,7 @@ export const fr: Dictionary = {
     sharePoints: [
       "Note BoardGameGeek",
       "Complexité",
-      "Meilleur nombre de joueurs",
+      "Nombre optimal de joueurs",
     ],
     rankingsTitle: "Jeux de société du moment et mieux classés",
     rankingsDescription:
